@@ -1,0 +1,416 @@
+/* LAYOUT */
+.fc-layout {
+  display: flex;
+  min-height: 100vh;
+  background: #eef3f0;
+  font-family: Inter, sans-serif;
+}
+
+/* SIDEBAR */
+.fc-sidebar {
+  width: 230px;
+  background: #2e7d32;
+  color: white;
+  padding: 22px;
+}
+
+.fc-logo {
+  margin-bottom: 30px;
+}
+
+.fc-sidebar nav a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.fc-sidebar nav a.active,
+.fc-sidebar nav a:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+/* MAIN */
+.fc-main {
+  flex: 1;
+  padding: 26px;
+}
+
+/* TOP BAR */
+.fc-topbar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.fc-topbar input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+.fc-topbar button {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+/* DROPDOWN */
+.fc-dropdown {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+/* TITLE */
+.fc-title {
+  margin: 18px 0;
+  color: #1b5e20;
+}
+
+/* GRID */
+.fc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 22px;
+}
+
+/* CARD */
+.fc-card {
+  background: white;
+  padding: 16px;
+  border-radius: 16px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+
+.fc-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: contain;
+}
+
+.fc-card button {
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 20px;
+  background: #2e7d32;
+  color: white;
+  border: none;
+}
+
+/* WISHLIST */
+.fc-heart {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  cursor: pointer;
+  color: #bbb;
+  font-size: 18px;
+}
+
+.fc-heart.active {
+  color: #e53935;
+}
+
+/* SUCCESS */
+.fc-success {
+  background: #e8f5e9;
+  color: #2e7d32;
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+/* ===============================
+   WISHLIST HEART (SCOPED)
+   =============================== */
+
+.pl-card {
+  position: relative;
+  background: white;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+
+.pl-heart {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  font-size: 22px;
+  color: white;
+  cursor: pointer;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+  transition: transform 0.2s, color 0.2s;
+  user-select: none;
+}
+
+.pl-heart:hover {
+  transform: scale(1.25);
+}
+
+.pl-heart.active {
+  color: #e53935;
+}
+/* ===== PRICE DISPLAY ===== */
+
+.fc-price {
+  margin: 6px 0 2px;
+  font-size: 15px;
+}
+
+.fc-price .farmer-price {
+  color: #2e7d32;
+  font-weight: 700;
+}
+
+.fc-market {
+  font-size: 13px;
+  color: #777;
+}
+
+.fc-market span {
+  color: #c62828;
+  font-weight: 600;
+  text-decoration: line-through;
+}
+/* ===== CATEGORY CHIPS ===== */
+.fc-chips {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 14px 0 20px;
+}
+
+.fc-chips button {
+  background: #e8f5e9;
+  border: 1px solid #c8e6c9;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.fc-chips button:hover {
+  background: #2e7d32;
+  color: #fff;
+}
+
+.fc-chips .clear {
+  background: #ffebee;
+  border-color: #ffcdd2;
+}
+/* ===== PRICE SLIDER ===== */
+.fc-price {
+  margin-bottom: 20px;
+  padding: 12px 16px;
+  background: #f9fbe7;
+  border-radius: 12px;
+  width: fit-content;
+}
+
+.fc-price label {
+  font-size: 14px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.fc-price input[type="range"] {
+  width: 220px;
+  cursor: pointer;
+}
+
+
+
+
+/* ============================= */
+/* 🔥 FRESHNESS METER (NEW) */
+/* ============================= */
+
+.fc-freshness {
+  margin: 10px 0 12px;
+  padding: 10px;
+  border-radius: 10px;
+  background: linear-gradient(
+    135deg,
+    rgba(76, 175, 80, 0.08),
+    rgba(129, 199, 132, 0.12)
+  );
+  font-size: 12px;
+  color: #1b5e20;
+}
+
+.fc-freshness small {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+/* Progress Bar Container */
+.fresh-bar {
+  width: 100%;
+  height: 8px;
+  background: #e0e0e0;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 6px 0;
+}
+
+/* Progress Fill */
+.fresh-fill {
+  height: 100%;
+  border-radius: 20px;
+  background: linear-gradient(
+    90deg,
+    #4caf50,
+    #8bc34a,
+    #cddc39
+  );
+  transition: width 0.6s ease;
+  box-shadow: 0 0 6px rgba(76, 175, 80, 0.6);
+}
+
+/* LOW FRESHNESS VISUAL (AUTO via width) */
+.fresh-fill[style*="0%"],
+.fresh-fill[style*="10%"],
+.fresh-fill[style*="20%"] {
+  background: linear-gradient(90deg, #f44336, #ff7043);
+  box-shadow: 0 0 6px rgba(244, 67, 54, 0.6);
+}
+
+
+
+
+/* =============================== */
+/* 🔧 FILTER & LANGUAGE DROPDOWNS */
+/* =============================== */
+
+.fc-dropdown {
+  background: white;
+  padding: 14px;
+  border-radius: 14px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  width: fit-content;
+  animation: dropFade 0.25s ease;
+}
+
+/* SELECT BOXES */
+.fc-dropdown select {
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid #c8e6c9;
+  font-size: 14px;
+  background: #f1f8e9;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.fc-dropdown select:hover {
+  background: #2e7d32;
+  color: white;
+}
+
+/* =============================== */
+/* 🌐 LANGUAGE FILTER BUTTONS */
+/* =============================== */
+
+.fc-dropdown button {
+  padding: 8px 14px;
+  border-radius: 20px;
+  border: 1px solid #c8e6c9;
+  background: #e8f5e9;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.fc-dropdown button:hover {
+  background: #2e7d32;
+  color: white;
+}
+
+/* =============================== */
+/* 🎯 CATEGORY CHIPS – ACTIVE LOOK */
+/* =============================== */
+
+.fc-chips button.active {
+  background: #2e7d32;
+  color: white;
+  border-color: #2e7d32;
+}
+
+/* =============================== */
+/* ✨ DROPDOWN ANIMATION */
+/* =============================== */
+
+@keyframes dropFade {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+
+
+
+
+
+/* 🔥 SETTINGS SLIDE PANEL */
+
+.settings-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s;
+  z-index: 20;
+}
+
+.settings-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.settings-panel {
+  position: fixed;
+  top: 0;
+  right: -380px;
+  width: 380px;
+  height: 100vh;
+  background: #fff;
+  padding: 20px;
+  transition: right 0.3s ease;
+  z-index: 21;
+  box-shadow: -4px 0 15px rgba(0,0,0,0.15);
+}
+
+.settings-panel.open {
+  right: 0;
+}
+
+.logout-btn {
+  width: 100%;
+  margin-top: 30px;
+  background: #e53935;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}

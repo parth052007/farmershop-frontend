@@ -1,0 +1,83 @@
+/* ===== PAGE ===== */
+.wl-page {
+  padding: 40px 60px;
+  min-height: 100vh;
+  background: #f7fff8;
+}
+
+.wl-title {
+  font-size: 28px;
+  color: #1b5e20;
+  margin-bottom: 25px;
+}
+
+.wl-empty {
+  color: #777;
+  font-size: 16px;
+}
+
+/* ===== GRID ===== */
+.wl-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 22px;
+}
+
+/* ===== CARD ===== */
+.wl-card {
+  background: white;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.wl-card:hover {
+  transform: translateY(-4px);
+}
+
+/* IMAGE FIX (IMPORTANT) */
+.wl-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: contain;
+  margin-bottom: 12px;
+}
+
+/* TEXT */
+.wl-card h4 {
+  font-size: 18px;
+  color: #2e7d32;
+  margin-bottom: 6px;
+}
+
+.wl-card p {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+/* BUTTON */
+.wl-card button {
+  background: #c62828;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.wl-card button:hover {
+  background: #b71c1c;
+}
+
+/* BACK LINK */
+.wl-back {
+  display: inline-block;
+  margin-top: 30px;
+  color: #2e7d32;
+  text-decoration: none;
+  font-weight: 600;
+}

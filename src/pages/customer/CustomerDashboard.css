@@ -1,0 +1,141 @@
+.customer-page {
+  min-height: 100vh;
+  width: 100%;
+  box-shadow: inset 0 0 120px rgba(255, 255, 255, 0.08);
+
+  /* 🔥 BACKGROUND IMAGE */
+  background-image: url("../../assets/back.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+  overflow: hidden;
+}
+
+/* 🌑 DARK OVERLAY FOR READABILITY */
+.customer-page::before {
+  .customer-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  /* 🌟 GLOW + CINEMATIC OVERLAY */
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(255, 255, 255, 0.15),
+      rgba(0, 0, 0, 0.65)
+    );
+
+  backdrop-filter: blur(2px);
+  z-index: 0;
+}
+
+}
+
+/* keep content above overlay */
+.customer-page > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== USER INFO ===== */
+.user-box {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.user-pill {
+  background: rgba(46, 125, 50, 0.9);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.user-dropdown {
+  margin-top: 8px;
+  width: 220px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.logout-btn {
+  width: 100%;
+  margin-top: 8px;
+  background: #c62828;
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* ===== VEGGIES ===== */
+.veggie-strip {
+  display: flex;
+  gap: 18px;
+  margin-bottom: 25px;
+}
+
+.veggie-strip img {
+  width: 65px;
+  transition: transform 0.3s ease;
+}
+
+.veggie-strip img:hover {
+  transform: scale(1.15);
+}
+
+/* ===== CENTER CARD (GLASS EFFECT) ===== */
+.dashboard-card {
+  background: rgba(255, 255, 255, 0.18); /* 🔥 TRANSPARENT */
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  padding: 40px 50px;
+  border-radius: 18px;
+  box-shadow: 0 20px 45px rgba(0,0,0,0.35);
+
+  border: 1px solid rgba(255,255,255,0.3);
+  text-align: center;
+  max-width: 480px;
+}
+
+/* TEXT */
+.dashboard-card h2 {
+  font-size: 30px;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.dashboard-card p {
+  color: #e0e0e0;
+  margin-bottom: 28px;
+}
+
+/* BUTTON */
+.btn-main {
+  background: linear-gradient(135deg, #2e7d32, #1b5e20);
+  border: none;
+  padding: 14px 34px;
+  font-size: 16px;
+  color: white;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.btn-main:hover {
+  opacity: 0.95;
+}

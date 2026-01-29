@@ -1,0 +1,140 @@
+/* 🌾 MAIN WRAPPER */
+.help-wrapper {
+  padding: 30px;
+  color: #fff;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+/* 🌾 TITLE */
+.help-wrapper h1 {
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 6px;
+  letter-spacing: 1px;
+  text-shadow: 0 0 12px rgba(0, 255, 150, 0.6);
+}
+
+/* 🌾 SUB TEXT */
+.help-wrapper p {
+  font-size: 15px;
+  opacity: 0.85;
+  margin-bottom: 30px;
+}
+
+/* 🎥 VIDEO GRID */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+}
+
+/* 🎬 VIDEO CARD */
+.video-card {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 14px;
+  text-decoration: none;
+  color: #fff;
+  transition: all 0.35s ease;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
+  position: relative;
+  overflow: hidden;
+}
+
+/* 🔥 GLOW BORDER */
+.video-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(0, 255, 180, 0.6),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+/* 🚀 HOVER EFFECT */
+.video-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.55);
+}
+
+.video-card:hover::before {
+  opacity: 1;
+}
+
+/* 🖼️ THUMBNAIL */
+.video-card img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  transition: transform 0.4s ease;
+}
+
+/* 🔍 IMAGE ZOOM */
+.video-card:hover img {
+  transform: scale(1.08);
+}
+
+/* 🎥 PLAY ICON */
+.video-card::after {
+  content: "▶";
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 48px;
+  color: rgba(255, 255, 255, 0.85);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+/* ▶ SHOW PLAY ICON */
+.video-card:hover::after {
+  opacity: 1;
+}
+
+/* 📌 VIDEO TITLE */
+.video-card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* 🌊 FADE ANIMATION */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 📱 MOBILE OPTIMIZATION */
+@media (max-width: 768px) {
+  .help-wrapper {
+    padding: 20px;
+  }
+
+  .help-wrapper h1 {
+    font-size: 26px;
+  }
+
+  .video-card img {
+    height: 150px;
+  }
+}

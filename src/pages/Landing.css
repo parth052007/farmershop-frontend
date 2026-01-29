@@ -1,0 +1,249 @@
+/* ===== RESET (LOCAL ONLY) ===== */
+.landing-wrapper {
+  width: 100%;
+  height: 100vh;
+  background: 
+    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+    url("../assets/landing.jpeg") center/cover no-repeat;
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ===== NAVBAR ===== */
+.landing-nav {
+  width: 100%;
+  padding: 22px 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.landing-nav .logo {
+  font-size: 28px;
+  letter-spacing: 3px;
+  font-weight: 500;
+}
+
+/* ===== NAV LINKS ===== */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 35px;
+}
+
+.nav-links li {
+  position: relative;
+  cursor: pointer;
+  font-size: 14px;
+  letter-spacing: 1px;
+  padding-bottom: 6px;
+}
+
+/* underline animation */
+.nav-links li::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #1abc9c;
+  transition: width 0.35s ease;
+}
+
+.nav-links li:hover::after {
+  width: 100%;
+}
+
+/* ===== HERO CONTENT ===== */
+.hero-content {
+  height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.hero-content h1 {
+  font-size: 48px;
+  letter-spacing: 3px;
+  margin-bottom: 18px;
+}
+
+.hero-content p {
+  font-size: 18px;
+  max-width: 650px;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+/* ===== BUTTON ===== */
+.hero-content button {
+  margin-top: 35px;
+  padding: 14px 40px;
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  font-size: 14px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  border-radius: 30px;
+  transition: all 0.35s ease;
+}
+
+.hero-content button:hover {
+  background-color: #1abc9c;
+  border-color: #1abc9c;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(26, 188, 156, 0.4);
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  .landing-nav {
+    padding: 20px 30px;
+  }
+
+  .nav-links {
+    gap: 20px;
+  }
+
+  .hero-content h1 {
+    font-size: 34px;
+  }
+
+  .hero-content p {
+    font-size: 15px;
+  }
+}
+
+
+
+
+/* ===========================
+   NAVBAR UNDERLINE ANIMATION
+=========================== */
+.nav-item {
+  position: relative;
+}
+
+.nav-item::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: #4caf50;
+  transition: width 0.3s ease;
+}
+
+.nav-item:hover::after,
+.nav-item.active::after {
+  width: 100%;
+}
+
+/* ===========================
+   FULL SCREEN INFO OVERLAY
+=========================== */
+.info-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  animation: overlayFade 0.3s ease;
+}
+
+/* ===========================
+   INFO CONTENT BOX
+=========================== */
+.info-box {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  padding: 40px 60px;
+  border-radius: 18px;
+  color: white;
+  max-width: 600px;
+  text-align: center;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+}
+
+.info-box h2 {
+  margin-bottom: 20px;
+  color: #4caf50;
+  letter-spacing: 2px;
+}
+
+.info-box p,
+.info-box li {
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.info-box ul {
+  padding: 0;
+  list-style: none;
+}
+
+.info-box li {
+  margin-bottom: 10px;
+}
+
+.info-box a {
+  color: #4caf50;
+  text-decoration: none;
+}
+
+.info-box a:hover {
+  text-decoration: underline;
+}
+
+/* ===========================
+   ANIMATION
+=========================== */
+@keyframes overlayFade {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+
+.nav-lang {
+  display: flex;
+  gap: 8px;
+  margin-left: 20px;
+}
+
+.nav-lang button {
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.nav-lang button:hover {
+  background: #4ade80;
+  color: #000;
+}
+
+.nav-lang button.active {
+  background: #22c55e;
+  color: #000;
+}

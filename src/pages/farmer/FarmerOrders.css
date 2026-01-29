@@ -1,0 +1,121 @@
+/* ===============================
+   FARMER ORDERS – FULLY SCOPED
+   =============================== */
+
+.farmer-orders-scope {
+  min-height: 100vh;
+  background: #f4f7fb;
+  padding: 40px 0;
+}
+
+/* PAGE */
+.farmer-orders-page {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+/* TITLE */
+.farmer-orders-page h2 {
+  font-size: 28px;
+  font-weight: 800;
+  color: #1b5e20;
+  margin-bottom: 30px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+/* ORDER CARD */
+.farmer-order-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 22px;
+  margin-bottom: 20px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+}
+
+.farmer-order-card:hover {
+  transform: translateY(-4px);
+}
+
+.farmer-order-card h4 {
+  margin-bottom: 12px;
+  color: #2e7d32;
+}
+
+.farmer-order-card p {
+  font-size: 14px;
+  color: #333;
+  margin: 4px 0;
+}
+
+/* STATUS */
+.farmer-orders-page .status {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.farmer-orders-page .status.placed {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+
+.farmer-orders-page .status.completed {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.farmer-orders-page .status.cancelled {
+  background: #ffebee;
+  color: #c62828;
+}
+
+/* EMPTY */
+.farmer-orders-page .no-orders {
+  text-align: center;
+  font-size: 16px;
+  color: #777;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .farmer-orders-page h2 {
+    font-size: 22px;
+  }
+}
+
+
+
+
+.whatsapp-btn {
+  display: inline-block;
+  background-color: #25D366;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  margin-top: 10px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.whatsapp-btn:hover {
+  background-color: #1ebe5d;
+}

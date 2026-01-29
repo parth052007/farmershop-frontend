@@ -1,0 +1,104 @@
+/* ===== ADMIN PRODUCT CARD ===== */
+.admin-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 18px;
+  margin: 15px auto;
+  width: 100%;
+  max-width: 420px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+  box-sizing: border-box;
+}
+
+/* IMAGE */
+.admin-card img {
+  width: 100%;
+  max-height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* TEXT */
+.admin-card h4 {
+  margin: 0;
+  font-size: 18px;
+  color: #2e7d32;
+}
+
+.admin-card p {
+  margin: 4px 0;
+  font-size: 14px;
+}
+
+/* ===== INPUT FIELD ===== */
+.admin-card input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #c8e6c9;
+  outline: none;
+  box-sizing: border-box;
+}
+
+/* ===== BUTTON GROUP ===== */
+.admin-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;   /* 🔥 IMPORTANT FIX */
+}
+
+.admin-actions button {
+  flex: 1;            /* 🔥 BUTTON STAYS INSIDE */
+  min-width: 120px;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* APPROVE */
+.admin-approve {
+  background: #2e7d32;
+  color: white;
+  border: none;
+}
+
+/* REJECT */
+.admin-reject {
+  background: #c62828;
+  color: white;
+  border: none;
+}
+
+/* MOBILE SAFE */
+@media (max-width: 480px) {
+  .admin-card {
+    max-width: 95%;
+  }
+}
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+.admin-table th,
+.admin-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.admin-table th {
+  background: #2e7d32;
+  color: white;
+}
+
+.admin-table img {
+  border-radius: 6px;
+}

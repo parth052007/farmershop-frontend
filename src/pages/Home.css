@@ -1,0 +1,229 @@
+/* ===== ROOT ===== */
+.home-container {
+  min-height: 100vh;
+  position: relative;
+  background: linear-gradient(135deg, #0b1d12, #000000);
+  color: #ffffff;
+  overflow-x: hidden;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* ===== BACKGROUND BLUR ===== */
+.forest-overlay {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at top, rgba(0,255,150,0.15), transparent 60%);
+  backdrop-filter: blur(2px);
+  z-index: 0;
+}
+
+/* ===== HEADER ===== */
+.header {
+  position: relative;
+  z-index: 2;
+  padding: 18px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.slogan {
+  font-size: 14px;
+  color: #9effc7;
+  text-shadow: 0 0 8px rgba(0,255,150,0.4);
+}
+
+/* 🌿 vines */
+.vine {
+  position: absolute;
+  font-size: 40px;
+  opacity: 0.15;
+}
+
+.vine-left {
+  left: 10px;
+  top: 10px;
+}
+
+.vine-right {
+  right: 10px;
+  top: 20px;
+}
+
+/* ===== HEADER CONTROLS ===== */
+.header-controls {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+/* 🌐 LANGUAGE BUTTONS */
+.lang-buttons button {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(0,255,150,0.3);
+  color: #bfffe0;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.3s ease;
+}
+
+.lang-buttons button:hover {
+  background: rgba(0,255,150,0.2);
+}
+
+.lang-buttons button.active {
+  background: linear-gradient(135deg, #00ff99, #00cc77);
+  color: #000;
+  font-weight: 600;
+  box-shadow: 0 0 10px rgba(0,255,150,0.6);
+}
+
+/* ===== HERO ===== */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 60px 20px 40px;
+}
+
+.title {
+  font-size: 42px;
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, #9effc7, #00ff99);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 20px rgba(0,255,150,0.4);
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #c6ffe5;
+  margin-bottom: 50px;
+}
+
+/* ===== CARD LAYOUT ===== */
+.card-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* ===== GLASS CARD ===== */
+.glass-card {
+  width: 300px;
+  padding: 30px 25px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 18px;
+  border: 1px solid rgba(0,255,150,0.25);
+  backdrop-filter: blur(12px);
+  box-shadow:
+    0 0 25px rgba(0,255,150,0.15),
+    inset 0 0 15px rgba(0,0,0,0.7);
+  transition: all 0.4s ease;
+  animation: rise 0.7s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 0 40px rgba(0,255,150,0.5);
+}
+
+/* ===== CARD TEXT ===== */
+.glass-card h2 {
+  margin-bottom: 10px;
+  color: #9effc7;
+}
+
+.glass-card p {
+  font-size: 14px;
+  color: #e4fff3;
+  margin-bottom: 20px;
+}
+
+/* ===== BUTTONS ===== */
+.primary-btn {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  margin-bottom: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  background: linear-gradient(135deg, #00ff99, #00cc77);
+  color: #000;
+  box-shadow: 0 0 15px rgba(0,255,150,0.6);
+  transition: all 0.3s ease;
+}
+
+.primary-btn:hover {
+  box-shadow: 0 0 25px rgba(0,255,150,0.9);
+  transform: scale(1.05);
+}
+
+.outline-btn {
+  width: 100%;
+  padding: 9px;
+  border-radius: 10px;
+  background: transparent;
+  border: 1px solid #00ff99;
+  color: #00ff99;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.outline-btn:hover {
+  background: rgba(0,255,150,0.15);
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  margin-top: 60px;
+  padding: 20px;
+  text-align: center;
+  color: #9effc7;
+  font-size: 13px;
+  position: relative;
+  z-index: 2;
+}
+
+.footer-links a {
+  color: #9effc7;
+  text-decoration: none;
+  margin: 0 8px;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #00ff99;
+  text-shadow: 0 0 6px rgba(0,255,150,0.6);
+}
+
+.divider {
+  opacity: 0.5;
+}
+
+/* ===== ANIMATION ===== */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .title {
+    font-size: 32px;
+  }
+
+  .card-wrapper {
+    gap: 25px;
+  }
+}

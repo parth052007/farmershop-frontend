@@ -1,0 +1,191 @@
+/* Cart.css (Scoped for Cart.jsx without touching JSX) */
+
+/* 🌿 Container */
+div.container.center {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 30px;
+  background: linear-gradient(to bottom right, #e8f5e9, #ffffff);
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  font-family: 'Roboto', sans-serif;
+  color: #1b5e20;
+  animation: cart-fadeIn 1s ease forwards;
+}
+
+/* 🌟 Titles */
+div.container.center h2,
+div.container.center h3,
+div.container.center h4 {
+  text-align: center;
+  letter-spacing: 2px;
+  color: #2e7d32;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  font-weight: 700;
+  animation: cart-popIn 0.6s ease forwards;
+}
+
+/* 🖼 Product Cards */
+div.container.center > .card {
+  background: linear-gradient(145deg, #ffffff, #d0f0d0);
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+div.container.center > .card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0, 150, 0, 0.3);
+}
+
+/* 🖼 Product Image */
+div.container.center > .card img {
+  border-radius: 12px;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  margin-bottom: 12px;
+  transition: transform 0.4s ease;
+}
+
+div.container.center > .card img:hover {
+  transform: scale(1.15) rotate(-2deg);
+}
+
+/* 🔢 Quantity Input */
+div.container.center > .card input[type="number"] {
+  padding: 6px 10px;
+  border-radius: 10px;
+  border: 1px solid #81c784;
+  width: 60px;
+  text-align: center;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+div.container.center > .card input[type="number"]:focus {
+  outline: none;
+  border: 2px solid #388e3c;
+  box-shadow: 0 0 10px rgba(56, 142, 60, 0.4);
+}
+
+/* 📜 Inputs & Textarea in Delivery Card */
+div.container.center > .card input[type="text"],
+div.container.center > .card input[type="tel"],
+div.container.center > .card textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #81c784;
+  font-size: 15px;
+  margin-bottom: 12px;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+div.container.center > .card input:focus,
+div.container.center > .card textarea:focus {
+  border: 2px solid #388e3c;
+  box-shadow: 0 0 10px rgba(56, 142, 60, 0.4);
+  outline: none;
+}
+
+/* 📞 Phone Note */
+div.container.center > .card small {
+  display: block;
+  font-size: 12px;
+  color: #388e3c;
+  margin-top: -8px;
+  margin-bottom: 8px;
+}
+
+/* 📦 Product List in Delivery Card */
+div.container.center > .card > div {
+  font-size: 14px;
+  padding: 6px 0;
+}
+
+div.container.center > .card > div p {
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* 👨‍🌾 Farmer Details Toggle Button */
+div.container.center > .card button[type="button"] {
+  background: #43a047;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  font-size: 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 5px;
+  transition: all 0.3s ease;
+}
+
+div.container.center > .card button[type="button"]:hover {
+  background: #66bb6a;
+  transform: scale(1.05);
+  box-shadow: 0 3px 10px rgba(76, 175, 80, 0.5);
+}
+
+/* 👨‍🌾 Farmer Details Box */
+div.container.center > .card div[style*="font-size: 13px"] {
+  font-size: 13px;
+  color: #1b5e20;
+  margin-top: 5px;
+  padding-left: 10px;
+  line-height: 1.5;
+}
+
+/* 💰 Total & Status */
+div.container.center > .card p b {
+  color: #2e7d32;
+  font-weight: 700;
+}
+
+/* ✅ Confirm Button */
+div.container.center > .card .btn-green[style*="width: 100%"] {
+  width: 100%;
+  padding: 12px 0;
+  border-radius: 12px;
+  background: linear-gradient(45deg, #43a047, #66bb6a);
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+  border: 2px solid #43a047;
+  margin-top: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+div.container.center > .card .btn-green[style*="width: 100%"]:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(76, 175, 80, 0.5);
+}
+
+/* ✨ Empty Cart Message */
+h2.center {
+  text-align: center;
+  font-size: 22px;
+  color: #388e3c;
+  margin-top: 60px;
+}
+
+/* 🔁 Animations */
+@keyframes cart-fadeIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes cart-popIn {
+  0% { opacity: 0; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1); }
+}
