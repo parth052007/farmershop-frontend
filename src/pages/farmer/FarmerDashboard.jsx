@@ -32,6 +32,9 @@ export default function FarmerDashboard() {
   const [showProfile, setShowProfile] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
 
+  /* 🔥 ADD — sidebar state */
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
   const handleLogout = () => {
     localStorage.removeItem("loggedUser");
     navigate("/login?role=farmer");
@@ -175,6 +178,17 @@ export default function FarmerDashboard() {
   return (
     <div className="fd-wrapper">
 
+      {/* 🔥 MOBILE HAMBURGER */}
+      <div className="fd-hamburger" onClick={() => setSidebarOpen(true)}>
+        ☰
+      </div>
+
+      {/* 🔥 SIDEBAR OVERLAY */}
+      <div
+        className={`sidebar-overlay ${sidebarOpen ? "active" : ""}`}
+        onClick={() => setSidebarOpen(false)}
+      />
+
       {/* 🔥 PROFILE OVERLAY */}
       <div
         className={`settings-overlay ${showProfile ? "active" : ""}`}
@@ -199,20 +213,21 @@ export default function FarmerDashboard() {
         </button>
       </div>
 
-      <aside className="fd-sidebar">
+      {/* 🔥 SIDEBAR */}
+      <aside className={`fd-sidebar ${sidebarOpen ? "open" : ""}`}>
         <h2>🌾 कृषी connect</h2>
 
         <button onClick={() => setLang("en")}>English</button>
         <button onClick={() => setLang("hi")}>हिंदी</button>
         <button onClick={() => setLang("mr")}>मराठी</button>
 
-        <Link to="/farmer/add-product">{text[lang].add}</Link>
-        <Link to="/farmer/my-products">{text[lang].view}</Link>
-        <Link to="/farmer/orders">{text[lang].orders}</Link>
-        <Link to="/farmer/rejected">{text[lang].rejected}</Link>
-        <Link to="/farmer/assistant">🤖 {text[lang].assistant}</Link>
-        <Link to="/farmer/helpful">📺 Helpful To You</Link>
-        <Link to="/farmer/market">🛒 {text[lang].market}</Link>
+        <Link to="/farmer/add-product" onClick={() => setSidebarOpen(false)}>{text[lang].add}</Link>
+        <Link to="/farmer/my-products" onClick={() => setSidebarOpen(false)}>{text[lang].view}</Link>
+        <Link to="/farmer/orders" onClick={() => setSidebarOpen(false)}>{text[lang].orders}</Link>
+        <Link to="/farmer/rejected" onClick={() => setSidebarOpen(false)}>{text[lang].rejected}</Link>
+        <Link to="/farmer/assistant" onClick={() => setSidebarOpen(false)}>🤖 {text[lang].assistant}</Link>
+        <Link to="/farmer/helpful" onClick={() => setSidebarOpen(false)}>📺 Helpful To You</Link>
+        <Link to="/farmer/market" onClick={() => setSidebarOpen(false)}>🛒 {text[lang].market}</Link>
 
         <button onClick={downloadInvoice}>
           📄 {text[lang].invoice}
@@ -232,10 +247,7 @@ export default function FarmerDashboard() {
 
       <main className="fd-main">
         <div className="fd-user">
-          <div
-            className="fd-avatar"
-            onClick={() => setShowProfile(true)}
-          >
+          <div className="fd-avatar" onClick={() => setShowProfile(true)}>
             👤
           </div>
         </div>
@@ -260,23 +272,23 @@ export default function FarmerDashboard() {
         </div>
 
         <div className="fd-chart">
-  <h3>📊 Monthly Sales</h3>
+          <h3>📊 Monthly Sales</h3>
 
-  <div className="fd-chart-wrapper">
-    {chartData && (
-      <Bar
-        data={chartData}
-        options={{
-          responsive: true,
-          maintainAspectRatio: false, // 🔥 FIX
-          plugins: {
-            legend: { display: false }
-          }
-        }}
-      />
-    )}
-  </div>
-</div>
+          <div className="fd-chart-wrapper">
+            {chartData && (
+              <Bar
+                data={chartData}
+                options={{
+                  responsive: true,
+                  maintainAspectRatio: false,
+                  plugins: {
+                    legend: { display: false }
+                  }
+                }}
+              />
+            )}
+          </div>
+        </div>
 
       </main>
     </div>
