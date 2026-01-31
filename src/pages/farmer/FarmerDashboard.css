@@ -604,3 +604,144 @@
   margin-bottom: 25px;
   text-shadow: 1px 1px 2px rgba(0,0,0,0.05); /* subtle SaaS effect */
 }
+/* ===================================================== */
+/* 🔹 GLOBAL MOBILE / RESPONSIVE FIXES 🔹 */
+/* ===================================================== */
+@media (max-width: 768px) {
+
+  /* Wrapper flex column */
+  .fd-wrapper {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  /* Sidebar full-width & top */
+  .fd-sidebar {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 15px;
+    gap: 10px;
+    box-sizing: border-box;
+  }
+
+  .fd-sidebar h2 {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 20px;
+  }
+
+  .fd-sidebar a,
+  .fd-sidebar button {
+    flex: 1 1 45%;
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  /* Main content padding */
+  .fd-main {
+    padding: 15px;
+    overflow-x: hidden;
+  }
+
+  /* Dashboard title */
+  .fd-main h1 {
+    font-size: 26px;
+    margin-bottom: 20px;
+  }
+
+  /* Cards stack vertically */
+  .fd-cards {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .fd-card p {
+    font-size: 24px;
+  }
+
+  .fd-card h4 {
+    font-size: 16px;
+  }
+
+  /* Chart adjustments */
+  .fd-chart-wrapper {
+    height: 260px !important;
+    min-height: 260px;
+  }
+
+  .fd-chart canvas {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+    touch-action: manipulation; /* Chart.js touch fix */
+  }
+
+  /* Weather sidebar */
+  .fd-weather-sidebar {
+    font-size: 12px;
+    padding: 10px;
+  }
+
+  /* Profile slide panel full width */
+  .settings-panel {
+    width: 100% !important;
+  }
+
+  /* Chatbot adjustments */
+  .fd-chatbot {
+    width: 90%;
+    max-width: 360px;
+    height: 380px;
+    bottom: 15px;
+    right: 5%;
+  }
+
+  .fd-chat-header {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .fd-chat-input input {
+    font-size: 14px;
+  }
+
+  .fd-chat-input button {
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+
+  /* User avatar */
+  .fd-user {
+    top: 15px;
+    right: 15px;
+  }
+
+  .fd-avatar {
+    font-size: 22px;
+  }
+}
+
+/* ===================================================== */
+/* 🔹 EXTRA TOUCH-FRIENDLY CSS FOR MOBILE 👆 */
+/* ===================================================== */
+@media (max-width: 768px) {
+  canvas {
+    touch-action: manipulation; /* Chart.js bug fix */
+  }
+
+  .fd-card:hover {
+    transform: none; /* remove hover effects for mobile */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  }
+
+  .fd-card:hover p {
+    transform: none;
+  }
+
+  .fd-card::before {
+    opacity: 0; /* disable glow on mobile */
+  }
+}
