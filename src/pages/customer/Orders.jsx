@@ -10,7 +10,7 @@ export default function Orders() {
   // ✅ LOAD USER-SPECIFIC ORDERS FROM BACKEND
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("loggedUser"));
-    const userEmail = user?.email;
+    const userEmail = user?.email?.toLowerCase();
     if (!userEmail) return;
 
     const loadOrders = async () => {

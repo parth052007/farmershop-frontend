@@ -111,11 +111,18 @@ export default function FarmerDashboard() {
     setRejectedOrders(rejectedProducts.length);
 
     const fetchOrders = async () => {
-      const res = await fetch(
-        `http://localhost:5000/api/orders/farmer/${farmer.email}`
-      );
-      const data = await res.json();
+  const API_URL = import.meta.env.VITE_API_URL + "/api/orders";
 
+  const response = await fetch(
+    `${API_URL}/farmer/${farmer.email.toLowerCase()}`
+  );
+
+  if (!response.ok) {
+    console.error("Failed to load farmer orders");
+    return;
+  }
+
+  const data = await response.json();
       setOrders(data);
       setTotalOrders(data.length);
 

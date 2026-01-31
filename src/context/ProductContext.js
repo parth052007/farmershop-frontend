@@ -3,7 +3,7 @@ import axios from "axios";
 
 const ProductContext = createContext();
 
-const API_URL = "https://farmer-shop-backend.onrender.com/api/products";
+const API_URL = import.meta.env.VITE_API_URL + "/api/products";
 
 export function ProductProvider({ children }) {
   const [products, setProducts] = useState([]);
