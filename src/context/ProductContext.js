@@ -40,7 +40,7 @@ export function ProductProvider({ children }) {
   // ➕ ADD PRODUCT (FARMER)
 const addProduct = async (product) => {
   try {
-    const res = await axios.post(API_URL, {
+    await axios.post(`${API_URL}/add`, {
       ...product,
       status: "pending",
       marketPrice: null,
