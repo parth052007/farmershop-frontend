@@ -260,17 +260,24 @@ export default function FarmerDashboard() {
         </div>
 
         <div className="fd-chart">
-          <h3>📊 Monthly Sales</h3>
-          {chartData && (
-            <Bar
-              data={chartData}
-              options={{
-                responsive: true,
-                plugins: { legend: { display: false } }
-              }}
-            />
-          )}
-        </div>
+  <h3>📊 Monthly Sales</h3>
+
+  <div className="fd-chart-wrapper">
+    {chartData && (
+      <Bar
+        data={chartData}
+        options={{
+          responsive: true,
+          maintainAspectRatio: false, // 🔥 FIX
+          plugins: {
+            legend: { display: false }
+          }
+        }}
+      />
+    )}
+  </div>
+</div>
+
       </main>
     </div>
   );

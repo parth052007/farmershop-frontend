@@ -316,3 +316,291 @@
 .fd-weather-sidebar {
   pointer-events: none;
 }
+
+
+.fd-chart-wrapper {
+  position: relative;
+  width: 100%;
+  height: 360px; /* PC */
+}
+
+/* 📱 MOBILE FIX */
+@media (max-width: 768px) {
+  .fd-wrapper {
+    flex-direction: column;
+  }
+
+  .fd-sidebar {
+    width: 100%;
+  }
+
+  .fd-main {
+    padding: 16px;
+  }
+
+  .fd-chart-wrapper {
+    height: 260px; /* MOBILE */
+  }
+
+  .fd-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ===================================================== */
+/* 🔥🔥🔥 MOBILE CHART FORCE VISIBILITY FIX 🔥🔥🔥 */
+/* ===================================================== */
+
+.fd-chart {
+  width: 100%;
+  position: relative;
+}
+
+.fd-chart canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+/* 👇 Chart wrapper ko flex-safe banao */
+.fd-chart-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===================================================== */
+/* 📱 MOBILE ONLY — HEIGHT FORCE + OVERFLOW FIX */
+/* ===================================================== */
+
+@media (max-width: 768px) {
+
+  .fd-chart {
+    padding: 18px;
+    overflow: visible;
+  }
+
+  .fd-chart-wrapper {
+    min-height: 260px;
+    height: auto;
+  }
+
+  .fd-main {
+    overflow-x: hidden;
+  }
+}
+
+/* ===================================================== */
+/* 🔥 TOUCH REFLOW FIX (CHART.JS BUG PATCH) */
+/* ===================================================== */
+
+@media (max-width: 768px) {
+  canvas {
+    touch-action: manipulation;
+  }
+}
+/* ===================================================== */
+/* 🔥🔥🔥 DASHBOARD CARDS – ELITE HOVER EFFECT 🔥🔥🔥 */
+/* ===================================================== */
+
+.fd-card {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s ease;
+}
+
+/* glow line */
+.fd-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(74, 222, 128, 0.35),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.35s;
+}
+
+.fd-card:hover::before {
+  opacity: 1;
+}
+
+.fd-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+
+/* number pop */
+.fd-card p {
+  transition: transform 0.35s ease;
+}
+
+.fd-card:hover p {
+  transform: scale(1.15);
+}
+
+
+/* ===================================================== */
+/* 🌑 DARK ELITE THEME ENHANCEMENT */
+/* ===================================================== */
+
+.fd-main {
+  background: linear-gradient(135deg, #0f172a, #020617);
+  border-radius: 20px;
+}
+
+.fd-card {
+  background: linear-gradient(145deg, #111827, #020617);
+  color: #e5e7eb;
+}
+
+.fd-card h3 {
+  color: #86efac;
+}
+
+
+.fd-card.green {
+  border-left: 6px solid #22c55e;
+}
+
+.fd-card.red {
+  border-left: 6px solid #f87171;
+}
+
+.fd-chart {
+  background: linear-gradient(145deg, #020617, #020617);
+  color: #e5e7eb;
+}
+
+.fd-chart h3 {
+  color: #86efac;
+}
+/* ===== ADD ONLY: GRAPH VISIBILITY FIX ===== */
+.fd-chart canvas {
+  filter: brightness(1.15) contrast(1.2);
+}
+
+
+/* ===================================================== */
+/* 🔹 LIGHT THEME CHART UPDATE 🔹 */
+/* ===================================================== */
+
+.fd-chart {
+  background: linear-gradient(145deg, #192a3a, #a3aec3); /* light gradient */
+  color: #1f2937; /* dark text for light theme */
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 10px 25px rgba(194, 61, 61, 0.1);
+  transition: all 0.3s ease;
+}
+
+.fd-chart h3 {
+  color: #041c14; /* green SaaS accent for heading */
+}
+
+.fd-chart canvas {
+  filter: brightness(1) contrast(1); /* neutral for light theme */
+  background: transparent;
+}
+
+/* Chart wrapper – remain same for flex alignment */
+.fd-chart-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 360px; /* desktop */
+}
+
+/* 📱 MOBILE FIX */
+@media (max-width: 768px) {
+  .fd-chart-wrapper {
+    height: 260px; /* mobile */
+  }
+}
+
+
+
+/* ===================================================== */
+/* 🔹 LIGHT THEME DASHBOARD CARDS UPDATE 🔹 */
+/* ===================================================== */
+
+.fd-card {
+  background: linear-gradient(145deg, #a3acb6, #e5e7eb); /* light gradient */
+  color: #1f2937; /* dark text for light theme */
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* glow line effect remains */
+.fd-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(10, 107, 75, 0.25), /* light green glow */
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.35s;
+}
+
+.fd-card:hover::before {
+  opacity: 1;
+}
+
+/* hover scale + shadow */
+.fd-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* numbers pop */
+.fd-card p {
+  font-size: 28px;
+  font-weight: bold;
+  transition: transform 0.35s ease;
+}
+
+.fd-card:hover p {
+  transform: scale(1.15);
+}
+
+/* card headings */
+.fd-card h4 {
+  color: #065f46; /* dark green SaaS accent */
+  margin-bottom: 12px;
+}
+
+/* green card accent (Total Revenue) */
+.fd-card.green {
+  border-left: 6px solid #179f72; /* bright green accent */
+}
+
+/* red card accent (Rejected Orders) */
+.fd-card.red {
+  border-left: 6px solid #ef4444; /* red accent */
+}
+
+/* neutral card (Total Orders) */
+.fd-card:not(.green):not(.red) {
+  border-left: 6px solid #3b82f6; /* blue accent for orders */
+}
+/* Dashboard Page Title (Farmer Dashboard) */
+.fd-main h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #96a4b8; /* dark text for light theme */
+  margin-bottom: 25px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.05); /* subtle SaaS effect */
+}
