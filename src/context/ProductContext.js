@@ -4,7 +4,7 @@ import axios from "axios";
 const ProductContext = createContext();
 
 const API_URL = import.meta.env.VITE_API_URL + "/api/products";
-
+console.log("VITE_API_URL =>", import.meta.env.VITE_API_URL);
 export function ProductProvider({ children }) {
   const [products, setProducts] = useState([]);
 
