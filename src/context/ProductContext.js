@@ -37,28 +37,29 @@ export function ProductProvider({ children }) {
   }, []);
 
   // ➕ ADD PRODUCT (FARMER)
-  const addProduct = async (product) => {
-    try {
-      const res = await axios.post(`${API_URL}/add`, {
-        ...product,
-        status: "pending",
-        marketPrice: null,
-        rejectReason: ""
-      });
+  // ➕ ADD PRODUCT (FARMER)
+const addProduct = async (product) => {
+  try {
+    const res = await axios.post(API_URL, {
+      ...product,
+      status: "pending",
+      marketPrice: null,
+      rejectReason: ""
+    });
 
-      setProducts(prev => [...prev, res.data]);
+    setProducts(prev => [...prev, res.data]);
 
-      return { success: true, data: res.data };
+    return { success: true, data: res.data };
 
-    } catch (err) {
-      console.error("ADD PRODUCT ERROR", err);
+  } catch (err) {
+    console.error("ADD PRODUCT ERROR", err);
 
-      return {
-        success: false,
-        message: err.response?.data?.message || "Product add failed"
-      };
-    }
-  };
+    return {
+      success: false,
+      message: err.response?.data?.message || "Product add failed"
+    };
+  }
+};
 
   // ✅ APPROVE
   const approveProduct = async (id, marketPrice) => {
