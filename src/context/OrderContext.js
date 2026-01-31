@@ -3,8 +3,8 @@ import axios from "axios";
 
 const OrderContext = createContext();
 
-// ✅ FIXED: correct base route
-const API_URL = "https://farmer-shop-backend.onrender.com/api/orders";
+// ✅ FIXED: ENV BASED API (hard-coded hata diya)
+const API_URL = import.meta.env.VITE_API_URL + "/api/orders";
 
 export function OrderProvider({ children }) {
   const [orders, setOrders] = useState([]);
@@ -17,7 +17,7 @@ export function OrderProvider({ children }) {
 
     try {
       const res = await axios.get(
-        `${API_URL}/customer/${user.email}`
+        `${API_URL}/customer/${user.email.toLowerCase()}`
       );
       setOrders(res.data);
     } catch (err) {
@@ -32,9 +32,18 @@ export function OrderProvider({ children }) {
   // ✅ PLACE ORDER
   const placeOrder = async (orderData) => {
     try {
+      const fixedOrderData = {
+        ...orderData,
+        customer: {
+          ...orderData.customer,
+          email: orderData.customer.email.toLowerCase()
+        },
+        farmerEmail: orderData.farmerEmail.toLowerCase()
+      };
+
       const res = await axios.post(
         `${API_URL}/place`,
-        orderData
+        fixedOrderData
       );
 
       setOrders(prev => [res.data, ...prev]);

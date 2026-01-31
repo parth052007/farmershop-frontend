@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 // ✅ FIXED: correct orders API base
-const API_URL = "https://farmer-shop-backend.onrender.com/api/orders";
+const API_URL = import.meta.env.VITE_API_URL + "/api/orders";
 
 export default function Orders() {
   const [orders, setOrders] = useState([]);
