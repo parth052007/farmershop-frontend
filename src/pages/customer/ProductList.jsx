@@ -76,19 +76,18 @@ export default function ProductList() {
   };
 
   let approvedProducts = products.filter((p) => {
-  const status = (p.status || "").toLowerCase();
+    const status = (p.status || "").toLowerCase();
 
-  const productName =
-    p.name?.[language] ||
-    p.name?.en ||
-    "";
+    const productName =
+      p.name?.[language] ||
+      p.name?.en ||
+      "";
 
-  return (
-    status === "approved" &&
-    productName.toLowerCase().includes(search.toLowerCase())
-  );
-});
-
+    return (
+      status === "approved" &&
+      productName.toLowerCase().includes(search.toLowerCase())
+    );
+  });
 
   approvedProducts = approvedProducts.filter(p => p.price <= maxPrice);
 
@@ -110,13 +109,10 @@ export default function ProductList() {
 
         <nav>
           <Link>Dashboard</Link>
-
           <Link className="active">🥬 Products</Link>
-
           <Link to="/customer/orders">📦 My Orders</Link>
           <Link to="/customer/wishlist">❤️ Wishlist</Link>
           <Link to="/customer/cart">🛒 Cart</Link>
-
           <Link onClick={() => setShowSettings(true)}>⚙️ Settings</Link>
         </nav>
       </aside>
@@ -161,50 +157,40 @@ export default function ProductList() {
             />
 
             <button
-  className="btn btn-green"
-  onClick={async () => {
+              className="btn btn-green"
+              onClick={async () => {
+                if (!user || !user._id) {
+                  alert("User ID missing. Please logout and login again.");
+                  return;
+                }
 
-    // ✅ SAFETY CHECK
-    if (!user || !user._id) {
-      alert("User ID missing. Please logout and login again.");
-      return;
-    }
+                try {
+                  const res = await fetch(
+                    `https://farmer-shop-backend.onrender.com/${user._id}`,
+                    {
+                      method: "PUT",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify(profile)
+                    }
+                  );
 
-    try {
-      const res = await fetch(
-        `https://farmer-shop-backend.onrender.com/${user._id}`,
-        {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(profile)
-        }
-      );
+                  if (!res.ok) {
+                    alert("Profile update failed");
+                    return;
+                  }
 
-      // ❌ if API failed
-      if (!res.ok) {
-        const text = await res.text();
-        console.error("Update failed:", text);
-        alert("Profile update failed");
-        return;
-      }
+                  const updatedUser = await res.json();
+                  localStorage.setItem("loggedUser", JSON.stringify(updatedUser));
+                  setEditMode(false);
+                  alert("✅ Profile Updated Successfully");
 
-      const updatedUser = await res.json();
-
-      // ✅ update localStorage properly
-      localStorage.setItem("loggedUser", JSON.stringify(updatedUser));
-
-      setEditMode(false);
-      alert("✅ Profile Updated Successfully");
-
-    } catch (err) {
-      console.error("SAVE ERROR:", err);
-      alert("Server error while updating profile");
-    }
-  }}
->
-  💾 Save
-</button>
-
+                } catch (err) {
+                  alert("Server error while updating profile");
+                }
+              }}
+            >
+              💾 Save
+            </button>
           </>
         ) : (
           <>
@@ -248,6 +234,21 @@ export default function ProductList() {
           <button onClick={() => setShowFilter(!showFilter)}>⚙️</button>
           <button onClick={() => setShowLang(!showLang)}>🌐</button>
         </div>
+
+        {/* ✅ LANGUAGE DROPDOWN — ONLY ADDITION */}
+        {showLang && (
+          <div className="fc-dropdown">
+            <button onClick={() => { setLanguage("en"); setShowLang(false); }}>
+              🇬🇧 English
+            </button>
+            <button onClick={() => { setLanguage("hi"); setShowLang(false); }}>
+              🇮🇳 हिंदी
+            </button>
+            <button onClick={() => { setLanguage("mr"); setShowLang(false); }}>
+              🇮🇳 मराठी
+            </button>
+          </div>
+        )}
 
         <div className="fc-chips">
           <button onClick={() => setCategoryFilter("vegetable")}>🥕 Vegetables</button>
