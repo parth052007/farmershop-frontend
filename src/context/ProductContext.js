@@ -10,56 +10,53 @@ export function ProductProvider({ children }) {
 
   // 🔁 LOAD PRODUCTS
   const loadProducts = async () => {
-  try {
-    const user = JSON.parse(localStorage.getItem("loggedUser"));
+    try {
+      const user = JSON.parse(localStorage.getItem("loggedUser"));
 
-    let res;
+      let res;
 
-    if (user?.role === "farmer") {
-      res = await axios.get(
-        `${API_URL}/farmer-products/${user.email}`
-      );
-    } else {
-      res = await axios.get(API_URL); // customer
+      if (user?.role === "farmer") {
+        res = await axios.get(
+          `${API_URL}/farmer-products/${user.email}`
+        );
+      } else {
+        res = await axios.get(API_URL); // customer
+      }
+
+      setProducts(Array.isArray(res.data) ? res.data : []);
+    } catch (err) {
+      console.error("LOAD PRODUCTS ERROR", err);
+      setProducts([]);
     }
-
-    setProducts(Array.isArray(res.data) ? res.data : []);
-  } catch (err) {
-    console.error("LOAD PRODUCTS ERROR", err);
-    setProducts([]);
-  }
-};
-
-
+  };
 
   useEffect(() => {
     loadProducts();
   }, []);
 
   // ➕ ADD PRODUCT (FARMER)
-  // ➕ ADD PRODUCT (FARMER)
-const addProduct = async (product) => {
-  try {
-    await axios.post(`${API_URL}/add`, {
-      ...product,
-      status: "pending",
-      marketPrice: null,
-      rejectReason: ""
-    });
+  const addProduct = async (product) => {
+    try {
+      const res = await axios.post(`${API_URL}/add`, {   // ✅ FIX
+        ...product,
+        status: "pending",
+        marketPrice: null,
+        rejectReason: ""
+      });
 
-    setProducts(prev => [...prev, res.data]);
+      setProducts(prev => [...prev, res.data]);          // ✅ FIX
 
-    return { success: true, data: res.data };
+      return { success: true, data: res.data };
 
-  } catch (err) {
-    console.error("ADD PRODUCT ERROR", err);
+    } catch (err) {
+      console.error("ADD PRODUCT ERROR", err);
 
-    return {
-      success: false,
-      message: err.response?.data?.message || "Product add failed"
-    };
-  }
-};
+      return {
+        success: false,
+        message: err.response?.data?.message || "Product add failed"
+      };
+    }
+  };
 
   // ✅ APPROVE
   const approveProduct = async (id, marketPrice) => {
