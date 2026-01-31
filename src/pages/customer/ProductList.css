@@ -414,3 +414,49 @@
   padding: 10px;
   cursor: pointer;
 }
+
+
+
+/* 📱 MOBILE RESPONSIVE FIX */
+@media (max-width: 768px) {
+
+  .fc-layout {
+    flex-direction: column;
+  }
+
+  /* Sidebar hide on mobile */
+  .fc-sidebar {
+    display: none;
+  }
+
+  .fc-main {
+    padding: 14px;
+    width: 100%;
+  }
+
+  /* Grid fix for mobile */
+  .fc-grid {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 16px;
+  }
+
+  .fc-card {
+    width: 100%;
+  }
+
+  .fc-topbar {
+    flex-wrap: wrap;
+  }
+
+  .fc-topbar button {
+    flex: 1;
+  }
+
+  .fc-price {
+    width: 100%;
+  }
+
+  .fc-price input[type="range"] {
+    width: 100%;
+  }
+}
