@@ -23,7 +23,7 @@ export default function AddProduct() {
     mr: "",
     price: "",
     category: "",
-    image: "",     // ✅ BASE64 STRING
+    image: "",     
     preview: null
   });
 
@@ -32,7 +32,6 @@ export default function AddProduct() {
     const file = e.target.files[0];
     if (!file) return;
 
-    // ⛔ size guard (important for Vercel)
     if (file.size > 200 * 1024) {
       alert("Image size should be under 200KB");
       return;
@@ -42,7 +41,7 @@ export default function AddProduct() {
     reader.onloadend = () => {
       setProduct({
         ...product,
-        image: reader.result,     // ✅ BASE64
+        image: reader.result,
         preview: reader.result
       });
     };
@@ -56,7 +55,7 @@ export default function AddProduct() {
       return;
     }
 
-    const res = await addProduct({
+    const payload = {                      // 🔥 ADDED (debug-friendly)
       name: {
         en: product.en,
         hi: product.hi,
@@ -64,13 +63,17 @@ export default function AddProduct() {
       },
       price: Number(product.price),
       category: product.category,
-      image: product.image,   // ✅ BASE64 SAVED
-      farmerEmail: user.email,
+      image: product.image,
+      farmerEmail: user.email,             // (kept as-is)
       farmer: {
         email: user.email,
         address: user.address || "Not Provided"
       }
-    });
+    };
+
+    console.log("ADD PRODUCT PAYLOAD =>", payload); // 🔥 ADDED (debug)
+
+    const res = await addProduct(payload);
 
     if (!res || !res.success) {
       alert(res?.message || "Product add failed");
