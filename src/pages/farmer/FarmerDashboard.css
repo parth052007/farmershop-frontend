@@ -1,236 +1,165 @@
+/* ===============================
+   RESET & BASE
+================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #f4f6f8;
+  color: #222;
+}
+
+/* ===============================
+   LAYOUT
+================================ */
 .fd-wrapper {
   display: flex;
   min-height: 100vh;
-  background: linear-gradient(135deg, #eef2f3, #c9d6ff);
-  animation: fadeIn 1s ease;
+  width: 100%;
+  overflow-x: hidden;
 }
 
+/* ===============================
+   SIDEBAR
+================================ */
 .fd-sidebar {
   width: 260px;
-  background: #1f2937;
-  color: white;
-  padding: 25px;
+  background: #1f7a4d;
+  color: #fff;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  animation: slideIn 0.6s ease;
+  gap: 12px;
 }
 
 .fd-sidebar h2 {
-  text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
-.fd-sidebar button,
-.fd-sidebar a {
-  background: #374151;
-  border: none;
-  color: white;
-  padding: 12px;
+.fd-sidebar a,
+.fd-sidebar button {
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  padding: 10px 12px;
   border-radius: 8px;
-  cursor: pointer;
   text-decoration: none;
-  transition: all 0.3s;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: left;
 }
 
-.fd-sidebar button:hover,
-.fd-sidebar a:hover {
-  background: #4ade80;
-  color: black;
-  transform: translateX(6px);
+.fd-sidebar a:hover,
+.fd-sidebar button:hover {
+  background: rgba(255,255,255,0.22);
 }
 
+/* weather in sidebar */
+.fd-weather-sidebar {
+  margin-top: auto;
+  background: rgba(255,255,255,0.15);
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 13px;
+}
+
+/* ===============================
+   MAIN CONTENT
+================================ */
 .fd-main {
   flex: 1;
-  padding: 30px;
+  padding: 24px;
+  position: relative;
 }
 
-.fd-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin-bottom: 30px;
-}
-
-.fd-card {
-  background: white;
-  padding: 25px;
-  border-radius: 15px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-  animation: pop 0.6s ease;
-}
-
-.fd-card.green {
-  border-left: 6px solid #22c55e;
-}
-
-.fd-card.red {
-  border-left: 6px solid #ef4444;
-}
-
-.fd-card p {
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.fd-chart {
-  background: white;
-  padding: 25px;
-  border-radius: 15px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-}
-
-@keyframes slideIn {
-  from { transform: translateX(-100%); }
-  to { transform: translateX(0); }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes pop {
-  from { transform: scale(0.9); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-
+/* user avatar */
 .fd-user {
-  position: absolute;
-  top: 20px;
-  right: 30px;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 12px;
 }
 
 .fd-avatar {
-  font-size: 24px;
+  width: 42px;
+  height: 42px;
+  background: #1f7a4d;
+  color: #fff;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
   cursor: pointer;
 }
 
-.fd-dropdown {
-  position: absolute;
-  right: 0;
-  top: 35px;
-  background: #fff;
-  border-radius: 8px;
-  padding: 12px;
-  width: 220px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-  z-index: 100;
+/* ===============================
+   DASHBOARD CARDS
+================================ */
+.fd-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 20px 0;
 }
 
-.fd-dropdown p {
-  margin: 4px 0;
+.fd-card {
+  background: #fff;
+  padding: 18px;
+  border-radius: 14px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+}
+
+.fd-card h4 {
   font-size: 14px;
+  color: #555;
 }
 
-.logout-btn {
-  margin-top: 10px;
-  width: 100%;
-  padding: 6px;
-  background: #e74c3c;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-/* ===== CHATBOT ===== */
-.fd-chatbot {
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-  width: 320px;
-  height: 420px;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-  display: flex;
-  flex-direction: column;
-  z-index: 9999;
-}
-
-.fd-chat-header {
-  background: #2e7d32;
-  color: #fff;
-  padding: 12px;
+.fd-card p {
+  font-size: 26px;
   font-weight: bold;
-  display: flex;
-  justify-content: space-between;
-  cursor: pointer;
+  margin-top: 8px;
 }
 
-.fd-chat-body {
-  flex: 1;
-  padding: 10px;
-  overflow-y: auto;
-  background: #f5f5f5;
+.fd-card.green {
+  background: #e9f7ef;
+  color: #166534;
 }
 
-.msg {
-  margin-bottom: 8px;
-  padding: 8px 10px;
-  border-radius: 8px;
-  max-width: 85%;
+.fd-card.red {
+  background: #fdecec;
+  color: #7f1d1d;
 }
 
-.msg.user {
-  background: #c8e6c9;
-  align-self: flex-end;
-}
-
-.msg.bot {
+/* ===============================
+   CHART
+================================ */
+.fd-chart {
   background: #fff;
+  padding: 18px;
+  border-radius: 16px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
 }
 
-.fd-chat-input {
-  display: flex;
-  border-top: 1px solid #ddd;
+.fd-chart-wrapper {
+  height: 320px;
+  margin-top: 12px;
 }
 
-.fd-chat-input input {
-  flex: 1;
-  padding: 8px;
-  border: none;
-  outline: none;
-}
-
-.fd-chat-input button {
-  background: #2e7d32;
-  color: #fff;
-  border: none;
-  padding: 8px 12px;
-}
-
-/* ===== PROFILE OVERLAY ===== */
-.settings-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.45);
-  opacity: 0;
-  visibility: hidden;
-  transition: 0.3s ease;
-  z-index: 90;
-}
-
-.settings-overlay.active {
-  opacity: 1;
-  visibility: visible;
-}
-
-/* ===== PROFILE SLIDE PANEL ===== */
+/* ===============================
+   PROFILE SLIDE PANEL
+================================ */
 .settings-panel {
   position: fixed;
   top: 0;
-  right: -360px;
-  width: 340px;
+  right: -320px;
+  width: 300px;
   height: 100vh;
-  background: #ffffff;
+  background: #fff;
+  z-index: 1200;
   padding: 20px;
-  box-shadow: -6px 0 25px rgba(0,0,0,0.15);
-  transition: 0.35s ease;
-  z-index: 100;
-  display: flex;
-  flex-direction: column;
+  transition: right 0.3s ease;
 }
 
 .settings-panel.open {
@@ -238,650 +167,128 @@
 }
 
 .settings-panel h3 {
-  text-align: center;
-  color: #2e7d32;
-  margin-bottom: 20px;
-  font-size: 22px;
+  margin-bottom: 16px;
 }
 
 .settings-panel p {
-  background: #f1f8e9;
-  padding: 12px 14px;
-  border-radius: 10px;
-  margin-bottom: 10px;
   font-size: 14px;
-  color: #333;
-  box-shadow: inset 0 0 0 1px #dcedc8;
+  margin-bottom: 8px;
 }
 
-.settings-panel p b {
-  color: #2e7d32;
-}
-
-.settings-panel .logout-btn {
-  margin-top: auto;
-  background: linear-gradient(135deg, #d32f2f, #b71c1c);
-  color: #f5eded;
-  font-weight: 600;
-  padding: 12px;
-  border-radius: 10px;
+.logout-btn {
+  margin-top: 20px;
+  width: 100%;
+  padding: 10px;
+  background: #dc2626;
+  color: #fff;
   border: none;
+  border-radius: 8px;
   cursor: pointer;
 }
 
-.settings-panel .logout-btn:hover {
-  opacity: 0.9;
-  transform: translateY(-1px);
-}
-
-@media (max-width: 450px) {
-  .settings-panel {
-    width: 100%;
-  }
-}
-
-.fd-weather-sidebar {
-  margin-top: 15px;
-  padding: 12px;
-  background:#374151;
-  border-left: 4px solid #2e7d32;
-  border-radius: 6px;
-  font-size: 14px;
-  transition: all 0.3s;
-}
-
-.fd-weather-sidebar h4 {
-  margin-bottom: 6px;
-  color: #dce6dc;
-}
-
-/* ===================================================== */
-/* 🔥🔥🔥 SIDEBAR ALIGNMENT FIX (ONLY ADDITION) 🔥🔥🔥 */
-/* ===================================================== */
-
-.fd-sidebar a,
-.fd-sidebar button {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  box-sizing: border-box;
-}
-
-.fd-sidebar button:hover,
-.fd-sidebar a:hover {
-  transform: translateX(4px);
-}
-
-.fd-weather-sidebar {
-  pointer-events: none;
-}
-
-
-.fd-chart-wrapper {
-  position: relative;
-  width: 100%;
-  height: 360px; /* PC */
-}
-
-/* 📱 MOBILE FIX */
-@media (max-width: 768px) {
-  .fd-wrapper {
-    flex-direction: column;
-  }
-
-  .fd-sidebar {
-    width: 100%;
-  }
-
-  .fd-main {
-    padding: 16px;
-  }
-
-  .fd-chart-wrapper {
-    height: 260px; /* MOBILE */
-  }
-
-  .fd-cards {
-    grid-template-columns: 1fr;
-  }
-}
-
-
-/* ===================================================== */
-/* 🔥🔥🔥 MOBILE CHART FORCE VISIBILITY FIX 🔥🔥🔥 */
-/* ===================================================== */
-
-.fd-chart {
-  width: 100%;
-  position: relative;
-}
-
-.fd-chart canvas {
-  width: 100% !important;
-  height: 100% !important;
-  display: block;
-}
-
-/* 👇 Chart wrapper ko flex-safe banao */
-.fd-chart-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* ===================================================== */
-/* 📱 MOBILE ONLY — HEIGHT FORCE + OVERFLOW FIX */
-/* ===================================================== */
-
-@media (max-width: 768px) {
-
-  .fd-chart {
-    padding: 18px;
-    overflow: visible;
-  }
-
-  .fd-chart-wrapper {
-    min-height: 260px;
-    height: auto;
-  }
-
-  .fd-main {
-    overflow-x: hidden;
-  }
-}
-
-/* ===================================================== */
-/* 🔥 TOUCH REFLOW FIX (CHART.JS BUG PATCH) */
-/* ===================================================== */
-
-@media (max-width: 768px) {
-  canvas {
-    touch-action: manipulation;
-  }
-}
-/* ===================================================== */
-/* 🔥🔥🔥 DASHBOARD CARDS – ELITE HOVER EFFECT 🔥🔥🔥 */
-/* ===================================================== */
-
-.fd-card {
-  position: relative;
-  overflow: hidden;
-  transition: all 0.35s ease;
-}
-
-/* glow line */
-.fd-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(74, 222, 128, 0.35),
-    transparent
-  );
-  opacity: 0;
-  transition: opacity 0.35s;
-}
-
-.fd-card:hover::before {
-  opacity: 1;
-}
-
-.fd-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
-}
-
-/* number pop */
-.fd-card p {
-  transition: transform 0.35s ease;
-}
-
-.fd-card:hover p {
-  transform: scale(1.15);
-}
-
-
-/* ===================================================== */
-/* 🌑 DARK ELITE THEME ENHANCEMENT */
-/* ===================================================== */
-
-.fd-main {
-  background: linear-gradient(135deg, #0f172a, #020617);
-  border-radius: 20px;
-}
-
-.fd-card {
-  background: linear-gradient(145deg, #111827, #020617);
-  color: #e5e7eb;
-}
-
-.fd-card h3 {
-  color: #86efac;
-}
-
-
-.fd-card.green {
-  border-left: 6px solid #22c55e;
-}
-
-.fd-card.red {
-  border-left: 6px solid #f87171;
-}
-
-.fd-chart {
-  background: linear-gradient(145deg, #020617, #020617);
-  color: #e5e7eb;
-}
-
-.fd-chart h3 {
-  color: #86efac;
-}
-/* ===== ADD ONLY: GRAPH VISIBILITY FIX ===== */
-.fd-chart canvas {
-  filter: brightness(1.15) contrast(1.2);
-}
-
-
-/* ===================================================== */
-/* 🔹 LIGHT THEME CHART UPDATE 🔹 */
-/* ===================================================== */
-
-.fd-chart {
-  background: linear-gradient(145deg, #192a3a, #a3aec3); /* light gradient */
-  color: #1f2937; /* dark text for light theme */
-  border-radius: 15px;
-  padding: 25px;
-  box-shadow: 0 10px 25px rgba(194, 61, 61, 0.1);
-  transition: all 0.3s ease;
-}
-
-.fd-chart h3 {
-  color: #041c14; /* green SaaS accent for heading */
-}
-
-.fd-chart canvas {
-  filter: brightness(1) contrast(1); /* neutral for light theme */
-  background: transparent;
-}
-
-/* Chart wrapper – remain same for flex alignment */
-.fd-chart-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 360px; /* desktop */
-}
-
-/* 📱 MOBILE FIX */
-@media (max-width: 768px) {
-  .fd-chart-wrapper {
-    height: 260px; /* mobile */
-  }
-}
-
-
-
-/* ===================================================== */
-/* 🔹 LIGHT THEME DASHBOARD CARDS UPDATE 🔹 */
-/* ===================================================== */
-
-.fd-card {
-  background: linear-gradient(145deg, #a3acb6, #e5e7eb); /* light gradient */
-  color: #1f2937; /* dark text for light theme */
-  padding: 25px;
-  border-radius: 15px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-  transition: all 0.35s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-/* glow line effect remains */
-.fd-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(10, 107, 75, 0.25), /* light green glow */
-    transparent
-  );
-  opacity: 0;
-  transition: opacity 0.35s;
-}
-
-.fd-card:hover::before {
-  opacity: 1;
-}
-
-/* hover scale + shadow */
-.fd-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
-}
-
-/* numbers pop */
-.fd-card p {
-  font-size: 28px;
-  font-weight: bold;
-  transition: transform 0.35s ease;
-}
-
-.fd-card:hover p {
-  transform: scale(1.15);
-}
-
-/* card headings */
-.fd-card h4 {
-  color: #065f46; /* dark green SaaS accent */
-  margin-bottom: 12px;
-}
-
-/* green card accent (Total Revenue) */
-.fd-card.green {
-  border-left: 6px solid #179f72; /* bright green accent */
-}
-
-/* red card accent (Rejected Orders) */
-.fd-card.red {
-  border-left: 6px solid #ef4444; /* red accent */
-}
-
-/* neutral card (Total Orders) */
-.fd-card:not(.green):not(.red) {
-  border-left: 6px solid #3b82f6; /* blue accent for orders */
-}
-/* Dashboard Page Title (Farmer Dashboard) */
-.fd-main h1 {
-  font-size: 32px;
-  font-weight: 700;
-  color: #96a4b8; /* dark text for light theme */
-  margin-bottom: 25px;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.05); /* subtle SaaS effect */
-}
-/* ===================================================== */
-/* 🔹 GLOBAL MOBILE / RESPONSIVE FIXES 🔹 */
-/* ===================================================== */
-@media (max-width: 768px) {
-
-  /* Wrapper flex column */
-  .fd-wrapper {
-    flex-direction: column;
-    min-height: auto;
-  }
-
-  /* Sidebar full-width & top */
-  .fd-sidebar {
-    width: 100%;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    padding: 15px;
-    gap: 10px;
-    box-sizing: border-box;
-  }
-
-  .fd-sidebar h2 {
-    width: 100%;
-    text-align: center;
-    margin-bottom: 10px;
-    font-size: 20px;
-  }
-
-  .fd-sidebar a,
-  .fd-sidebar button {
-    flex: 1 1 45%;
-    font-size: 14px;
-    padding: 10px;
-  }
-
-  /* Main content padding */
-  .fd-main {
-    padding: 15px;
-    overflow-x: hidden;
-  }
-
-  /* Dashboard title */
-  .fd-main h1 {
-    font-size: 26px;
-    margin-bottom: 20px;
-  }
-
-  /* Cards stack vertically */
-  .fd-cards {
-    grid-template-columns: 1fr;
-    gap: 15px;
-  }
-
-  .fd-card p {
-    font-size: 24px;
-  }
-
-  .fd-card h4 {
-    font-size: 16px;
-  }
-
-  /* Chart adjustments */
-  .fd-chart-wrapper {
-    height: 260px !important;
-    min-height: 260px;
-  }
-
-  .fd-chart canvas {
-    width: 100% !important;
-    height: 100% !important;
-    display: block;
-    touch-action: manipulation; /* Chart.js touch fix */
-  }
-
-  /* Weather sidebar */
-  .fd-weather-sidebar {
-    font-size: 12px;
-    padding: 10px;
-  }
-
-  /* Profile slide panel full width */
-  .settings-panel {
-    width: 100% !important;
-  }
-
-  /* Chatbot adjustments */
-  .fd-chatbot {
-    width: 90%;
-    max-width: 360px;
-    height: 380px;
-    bottom: 15px;
-    right: 5%;
-  }
-
-  .fd-chat-header {
-    font-size: 14px;
-    padding: 8px;
-  }
-
-  .fd-chat-input input {
-    font-size: 14px;
-  }
-
-  .fd-chat-input button {
-    padding: 6px 10px;
-    font-size: 14px;
-  }
-
-  /* User avatar */
-  .fd-user {
-    top: 15px;
-    right: 15px;
-  }
-
-  .fd-avatar {
-    font-size: 22px;
-  }
-}
-
-/* ===================================================== */
-/* 🔹 EXTRA TOUCH-FRIENDLY CSS FOR MOBILE 👆 */
-/* ===================================================== */
-@media (max-width: 768px) {
-  canvas {
-    touch-action: manipulation; /* Chart.js bug fix */
-  }
-
-  .fd-card:hover {
-    transform: none; /* remove hover effects for mobile */
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-  }
-
-  .fd-card:hover p {
-    transform: none;
-  }
-
-  .fd-card::before {
-    opacity: 0; /* disable glow on mobile */
-  }
-}
-
-
-
-/* 🚨 EMERGENCY MOBILE OVERRIDE — FORCE FIX */
-@media (max-width: 768px) {
-
-  .fd-sidebar {
-    position: static !important;
-    width: 100vw !important;
-    max-width: 100vw !important;
-    left: 0 !important;
-    right: 0 !important;
-  }
-
-  .fd-main {
-    width: 100vw !important;
-    max-width: 100vw !important;
-    margin-left: 0 !important;
-  }
-
-  .fd-wrapper {
-    overflow-x: hidden !important;
-  }
-}
-
-
-/* ================= MOBILE SIDEBAR FIX ================= */
-
-.fd-hamburger {
-  display: none;
-  font-size: 26px;
-  cursor: pointer;
-}
-
-/* Overlay */
-.sidebar-overlay {
+/* overlay for profile */
+.settings-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0,0,0,0.45);
+  z-index: 1100;
   opacity: 0;
   pointer-events: none;
-  transition: 0.3s;
-  z-index: 998;
 }
 
-.sidebar-overlay.active {
+.settings-overlay.active {
   opacity: 1;
   pointer-events: all;
 }
 
-/* Mobile rules */
+/* ===============================
+   MOBILE ELEMENTS
+================================ */
+.fd-hamburger {
+  display: none;
+}
+
+.sidebar-overlay {
+  display: none;
+}
+
+/* ===============================
+   MOBILE VIEW
+================================ */
 @media (max-width: 768px) {
 
+  .fd-wrapper {
+    flex-direction: column;
+  }
+
+  /* hamburger */
   .fd-hamburger {
     display: block;
-  }
-
-  .fd-sidebar {
     position: fixed;
-    top: 0;
-    left: -260px; /* 🔥 hidden */
-    width: 260px;
-    height: 100vh;
-    z-index: 999;
-    transition: left 0.3s ease;
-  }
-
-  .fd-sidebar.open {
-    left: 0; /* 🔥 slide in */
-  }
-
-  .fd-main {
-    margin-left: 0;
-    padding: 16px;
-  }
-
-  /* GRAPH FIX */
-  .fd-chart-wrapper {
-    height: 260px;
-    width: 100%;
-  }
-}
-/* ================= FINAL SIDEBAR SLIDE FIX ================= */
-
-/* Desktop — sidebar always visible */
-@media (min-width: 769px) {
-  .fd-sidebar {
-    position: relative;
-    left: 0;
-  }
-
-  .sidebar-overlay {
-    display: none;
-  }
-}
-
-/* Mobile — sidebar hidden by default */
-@media (max-width: 768px) {
-
-  .fd-hamburger {
-    position: fixed;
-    top: 18px;
-    left: 18px;
-    z-index: 1001;
-    font-size: 26px;
+    top: 16px;
+    left: 16px;
+    font-size: 28px;
+    z-index: 1300;
     cursor: pointer;
-    color: #fff;
+    color: #1f7a4d;
   }
 
+  /* sidebar slide */
   .fd-sidebar {
     position: fixed;
     top: 0;
     left: -260px;
-    width: 260px;
     height: 100vh;
-    transition: left 0.35s ease;
-    z-index: 1000;
+    z-index: 1200;
+    transition: left 0.3s ease;
   }
 
   .fd-sidebar.open {
     left: 0;
   }
 
+  /* overlay */
   .sidebar-overlay {
+    display: block;
     position: fixed;
     inset: 0;
     background: rgba(0,0,0,0.45);
-    z-index: 999;
+    z-index: 1100;
     opacity: 0;
     pointer-events: none;
-    transition: 0.3s;
   }
 
   .sidebar-overlay.active {
     opacity: 1;
     pointer-events: all;
   }
+
+  /* main */
+  .fd-main {
+    padding: 70px 16px 16px;
+  }
+
+  /* cards */
+  .fd-cards {
+    grid-template-columns: 1fr;
+  }
+
+  /* chart */
+  .fd-chart-wrapper {
+    height: 260px;
+  }
 }
 
+/* ===============================
+   DESKTOP VIEW
+================================ */
+@media (min-width: 769px) {
 
+  .fd-hamburger {
+    display: none;
+  }
+
+  .sidebar-overlay {
+    display: none !important;
+  }
+}
