@@ -9,8 +9,8 @@
 
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  background: #f4f6f8;
-  color: #222;
+  background: #0f1115; /* dark app background */
+  color: #e5e7eb;
 }
 
 /* ===============================
@@ -24,47 +24,56 @@ body {
 }
 
 /* ===============================
-   SIDEBAR
+   SIDEBAR (HARDCORE DARK)
 ================================ */
 .fd-sidebar {
   width: 260px;
-  background: #1f7a4d;
-  color: #fff;
+  background: linear-gradient(180deg, #050608, #0b0d12);
+  color: #e5e7eb;
   padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 12px;
+  border-right: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 6px 0 40px rgba(0,0,0,0.9);
 }
 
 .fd-sidebar h2 {
   margin-bottom: 16px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
 .fd-sidebar a,
 .fd-sidebar button {
-  background: rgba(255,255,255,0.12);
-  color: #fff;
-  padding: 10px 12px;
-  border-radius: 8px;
+  background: rgba(255,255,255,0.06);
+  color: #e5e7eb;
+  padding: 11px 14px;
+  border-radius: 10px;
   text-decoration: none;
   border: none;
   cursor: pointer;
   font-size: 14px;
   text-align: left;
+  transition: all 0.25s ease;
 }
 
 .fd-sidebar a:hover,
 .fd-sidebar button:hover {
-  background: rgba(255,255,255,0.22);
+  background: linear-gradient(135deg, #16a34a, #22c55e);
+  color: #022c22;
+  transform: translateX(6px);
+  box-shadow: 0 6px 18px rgba(34,197,94,0.45);
 }
 
 /* weather in sidebar */
 .fd-weather-sidebar {
   margin-top: auto;
-  background: rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.08);
   padding: 12px;
-  border-radius: 10px;
+  border-radius: 12px;
   font-size: 13px;
+  backdrop-filter: blur(6px);
 }
 
 /* ===============================
@@ -74,6 +83,7 @@ body {
   flex: 1;
   padding: 24px;
   position: relative;
+  background: radial-gradient(circle at top, #141821, #0f1115 60%);
 }
 
 /* user avatar */
@@ -86,12 +96,18 @@ body {
 .fd-avatar {
   width: 42px;
   height: 42px;
-  background: #1f7a4d;
-  color: #fff;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: #022c22;
   border-radius: 50%;
   display: grid;
   place-items: center;
   cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.fd-avatar:hover {
+  transform: scale(1.12) rotate(6deg);
+  box-shadow: 0 10px 25px rgba(34,197,94,0.6);
 }
 
 /* ===============================
@@ -100,46 +116,62 @@ body {
 .fd-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  gap: 18px;
   margin: 20px 0;
 }
 
 .fd-card {
-  background: #fff;
-  padding: 18px;
-  border-radius: 14px;
-  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+  background: linear-gradient(160deg, #141821, #0c0f14);
+  padding: 20px;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.65);
+  transition: all 0.3s ease;
+}
+
+.fd-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 22px 55px rgba(0,0,0,0.85);
 }
 
 .fd-card h4 {
-  font-size: 14px;
-  color: #555;
+  font-size: 13px;
+  color: #9ca3af;
+  letter-spacing: 0.4px;
 }
 
 .fd-card p {
-  font-size: 26px;
-  font-weight: bold;
-  margin-top: 8px;
+  font-size: 28px;
+  font-weight: 800;
+  margin-top: 10px;
+  transition: transform 0.3s ease;
 }
 
+.fd-card:hover p {
+  transform: translateY(-6px);
+}
+
+/* revenue green */
 .fd-card.green {
-  background: #e9f7ef;
-  color: #166534;
+  background: linear-gradient(135deg, #052e1b, #064e3b);
+  color: #4ade80;
 }
 
+/* orders red */
 .fd-card.red {
-  background: #fdecec;
-  color: #7f1d1d;
+  background: linear-gradient(135deg, #3f0d0d, #7f1d1d);
+  color: #fca5a5;
 }
 
 /* ===============================
    CHART
 ================================ */
 .fd-chart {
-  background: #fff;
-  padding: 18px;
-  border-radius: 16px;
-  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+  background: linear-gradient(160deg, #141821, #0c0f14);
+  padding: 20px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 18px 50px rgba(0,0,0,0.7);
 }
 
 .fd-chart-wrapper {
@@ -156,41 +188,33 @@ body {
   right: -320px;
   width: 300px;
   height: 100vh;
-  background: #fff;
+  background: #0c0f14;
   z-index: 1200;
   padding: 20px;
   transition: right 0.3s ease;
+  color: #e5e7eb;
 }
 
 .settings-panel.open {
   right: 0;
 }
 
-.settings-panel h3 {
-  margin-bottom: 16px;
-}
-
-.settings-panel p {
-  font-size: 14px;
-  margin-bottom: 8px;
-}
-
 .logout-btn {
   margin-top: 20px;
   width: 100%;
   padding: 10px;
-  background: #dc2626;
+  background: linear-gradient(135deg, #dc2626, #991b1b);
   color: #fff;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
 }
 
-/* overlay for profile */
+/* overlay */
 .settings-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.45);
+  background: rgba(0,0,0,0.65);
   z-index: 1100;
   opacity: 0;
   pointer-events: none;
@@ -202,26 +226,13 @@ body {
 }
 
 /* ===============================
-   MOBILE ELEMENTS
-================================ */
-.fd-hamburger {
-  display: none;
-}
-
-.sidebar-overlay {
-  display: none;
-}
-
-/* ===============================
    MOBILE VIEW
 ================================ */
 @media (max-width: 768px) {
-
   .fd-wrapper {
     flex-direction: column;
   }
 
-  /* hamburger */
   .fd-hamburger {
     display: block;
     position: fixed;
@@ -230,10 +241,9 @@ body {
     font-size: 28px;
     z-index: 1300;
     cursor: pointer;
-    color: #1f7a4d;
+    color: #4ade80;
   }
 
-  /* sidebar slide */
   .fd-sidebar {
     position: fixed;
     top: 0;
@@ -247,12 +257,11 @@ body {
     left: 0;
   }
 
-  /* overlay */
   .sidebar-overlay {
     display: block;
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.45);
+    background: rgba(0,0,0,0.7);
     z-index: 1100;
     opacity: 0;
     pointer-events: none;
@@ -263,17 +272,14 @@ body {
     pointer-events: all;
   }
 
-  /* main */
   .fd-main {
     padding: 70px 16px 16px;
   }
 
-  /* cards */
   .fd-cards {
     grid-template-columns: 1fr;
   }
 
-  /* chart */
   .fd-chart-wrapper {
     height: 260px;
   }
@@ -283,7 +289,6 @@ body {
    DESKTOP VIEW
 ================================ */
 @media (min-width: 769px) {
-
   .fd-hamburger {
     display: none;
   }
