@@ -31,6 +31,9 @@ export default function ProductList() {
   const [showSettings, setShowSettings] = useState(false);
   const [editMode, setEditMode] = useState(false);
 
+  // ✅ HAMBURGER STATE (ONLY ADDITION)
+  const [showSidebar, setShowSidebar] = useState(false);
+
   const user = JSON.parse(localStorage.getItem("loggedUser"));
 
   const [profile, setProfile] = useState({
@@ -104,7 +107,7 @@ export default function ProductList() {
     <div className="fc-layout">
 
       {/* ========== SIDEBAR ========== */}
-      <aside className="fc-sidebar">
+      <aside className={`fc-sidebar ${showSidebar ? "open" : ""}`}>
         <h2 className="fc-logo">🥬 कृषी connect</h2>
 
         <nav>
@@ -116,6 +119,14 @@ export default function ProductList() {
           <Link onClick={() => setShowSettings(true)}>⚙️ Settings</Link>
         </nav>
       </aside>
+
+      {/* SIDEBAR OVERLAY (ONLY ADDITION) */}
+      {showSidebar && (
+        <div
+          className="sidebar-overlay"
+          onClick={() => setShowSidebar(false)}
+        />
+      )}
 
       {/* OVERLAY */}
       <div
@@ -223,6 +234,14 @@ export default function ProductList() {
       <main className="fc-main">
 
         <div className="fc-topbar">
+          {/* ✅ HAMBURGER BUTTON (ONLY ADDITION) */}
+          <button
+            className="hamburger"
+            onClick={() => setShowSidebar(true)}
+          >
+            ☰
+          </button>
+
           <input
             type="text"
             placeholder="Search products..."
@@ -235,7 +254,6 @@ export default function ProductList() {
           <button onClick={() => setShowLang(!showLang)}>🌐</button>
         </div>
 
-        {/* ✅ LANGUAGE DROPDOWN — ONLY ADDITION */}
         {showLang && (
           <div className="fc-dropdown">
             <button onClick={() => { setLanguage("en"); setShowLang(false); }}>

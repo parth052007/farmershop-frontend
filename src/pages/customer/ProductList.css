@@ -283,3 +283,159 @@
     width: 100%;
   }
 }
+
+
+
+/* ===============================
+   GLOBAL SMOOTHNESS
+================================ */
+* {
+  transition: background 0.25s ease,
+              color 0.25s ease,
+              transform 0.25s ease,
+              box-shadow 0.25s ease;
+}
+
+/* ===============================
+   SIDEBAR LINK MOTION
+================================ */
+.fc-sidebar nav a {
+  position: relative;
+  overflow: hidden;
+}
+
+.fc-sidebar nav a::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(0, 230, 118, 0.35),
+    transparent
+  );
+  transform: translateX(-100%);
+  transition: transform 0.45s ease;
+}
+
+.fc-sidebar nav a:hover::before {
+  transform: translateX(100%);
+}
+
+.fc-sidebar nav a:hover {
+  transform: translateX(6px) scale(1.03);
+  box-shadow: 0 6px 20px rgba(0, 200, 83, 0.35);
+}
+
+/* ===============================
+   CARD – SAAS TYPE FLOAT
+================================ */
+.fc-card {
+  animation: breathe 4s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%   { transform: translateY(0) scale(1); }
+  50%  { transform: translateY(-3px) scale(1.01); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+.fc-card:hover {
+  animation-play-state: paused;
+  transform: translateY(-10px) scale(1.04);
+  box-shadow: 0 25px 60px rgba(0, 230, 118, 0.45);
+}
+
+/* ===============================
+   IMAGE POP EFFECT
+================================ */
+.fc-card img {
+  transition: transform 0.4s ease;
+}
+
+.fc-card:hover img {
+  transform: scale(1.12) rotate(-1deg);
+}
+
+/* ===============================
+   ❤️ WISHLIST HEART – PULSE
+================================ */
+.fc-heart.active {
+  animation: heartBeat 0.6s ease;
+}
+
+@keyframes heartBeat {
+  0%   { transform: scale(1); }
+  30%  { transform: scale(1.5); }
+  60%  { transform: scale(0.9); }
+  100% { transform: scale(1.2); }
+}
+
+/* ===============================
+   🛒 ADD TO CART – TAGDA EFFECT
+================================ */
+.fc-card button {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 200, 83, 0.35);
+}
+
+.fc-card button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(255,255,255,0.5),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.fc-card button:hover::before {
+  opacity: 1;
+}
+
+.fc-card button:hover {
+  transform: translateY(-3px) scale(1.07);
+  box-shadow: 0 18px 40px rgba(0, 255, 135, 0.6);
+}
+
+.fc-card button:active {
+  transform: scale(0.9);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+}
+
+/* ===============================
+   TOPBAR BUTTON POP
+================================ */
+.fc-topbar button:hover {
+  transform: scale(1.1) rotate(-1deg);
+  box-shadow: 0 10px 22px rgba(0, 200, 83, 0.45);
+}
+
+/* ===============================
+   FILTER / CHIP JUICE
+================================ */
+.fc-chips button {
+  position: relative;
+}
+
+.fc-chips button:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 8px 18px rgba(0, 200, 83, 0.35);
+}
+
+/* ===============================
+   MOBILE – STILL SMOOTH
+================================ */
+@media (max-width: 768px) {
+  .fc-card {
+    animation: none;
+  }
+
+  .fc-card:hover {
+    transform: scale(1.03);
+  }
+}
