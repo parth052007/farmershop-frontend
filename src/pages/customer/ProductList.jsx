@@ -196,9 +196,7 @@ export default function ProductList() {
                 }
 
                 try {
-                  const res = await fetch(
-                    `https://farmer-shop-backend.onrender.com/${user._id}`,
-                    {
+                  const res = await fetch(`https://farmer-shop-backend.onrender.com/update/${user._id}`, {
                       method: "PUT",
                       headers: { "Content-Type": "application/json" },
                       body: JSON.stringify(profile)
