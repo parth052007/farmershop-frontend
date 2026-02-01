@@ -111,7 +111,7 @@ export default function FarmerDashboard() {
     setRejectedOrders(rejectedProducts.length);
 
     const fetchOrders = async () => {
-  const API_URL = import.meta.env.VITE_API_URL + "/api/orders";
+  const API_URL = process.env.REACT_APP_API_URL + "/api/orders";
 
   const response = await fetch(
     `${API_URL}/farmer/${farmer.email.toLowerCase()}`
