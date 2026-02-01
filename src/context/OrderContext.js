@@ -4,7 +4,8 @@ import axios from "axios";
 const OrderContext = createContext();
 
 // ✅ FIXED: ENV BASED API (hard-coded hata diya)
-const API_URL = import.meta.env.VITE_API_URL + "/api/orders";
+const API_URL = process.env.REACT_APP_API_URL + "/api/orders";
+console.log("ORDER API =>", process.env.REACT_APP_API_URL);
 
 export function OrderProvider({ children }) {
   const [orders, setOrders] = useState([]);
