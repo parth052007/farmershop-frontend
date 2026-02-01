@@ -167,11 +167,11 @@ body {
    CHART
 ================================ */
 .fd-chart {
-  background: linear-gradient(160deg, #141821, #0c0f14);
+  background: linear-gradient(160deg, #445b92, #0c0f14);
   padding: 20px;
   border-radius: 20px;
-  border: 1px solid rgba(255,255,255,0.06);
-  box-shadow: 0 18px 50px rgba(0,0,0,0.7);
+  border: 1px solid rgba(181, 39, 39, 0.06);
+  box-shadow: 0 18px 50px rgba(219, 207, 207, 0.7);
 }
 
 .fd-chart-wrapper {
