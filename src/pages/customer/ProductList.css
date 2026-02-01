@@ -1,4 +1,6 @@
-/* LAYOUT */
+/* ===============================
+   LAYOUT
+================================ */
 .fc-layout {
   display: flex;
   min-height: 100vh;
@@ -7,7 +9,9 @@
   color: #e6f4ef;
 }
 
-/* SIDEBAR */
+/* ===============================
+   SIDEBAR
+================================ */
 .fc-sidebar {
   width: 230px;
   background: linear-gradient(180deg, #0f2f22, #081a13);
@@ -27,6 +31,8 @@
   border-radius: 10px;
   margin-bottom: 8px;
   transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .fc-sidebar nav a.active,
@@ -34,13 +40,43 @@
   background: rgba(0, 200, 83, 0.22);
 }
 
-/* MAIN */
+/* ===============================
+   SIDEBAR LINK MOTION
+================================ */
+.fc-sidebar nav a::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(0, 230, 118, 0.35),
+    transparent
+  );
+  transform: translateX(-100%);
+  transition: transform 0.45s ease;
+}
+
+.fc-sidebar nav a:hover::before {
+  transform: translateX(100%);
+}
+
+.fc-sidebar nav a:hover {
+  transform: translateX(6px) scale(1.03);
+  box-shadow: 0 6px 20px rgba(0, 200, 83, 0.35);
+}
+
+/* ===============================
+   MAIN
+================================ */
 .fc-main {
   flex: 1;
   padding: 26px;
 }
 
-/* TOP BAR */
+/* ===============================
+   TOP BAR
+================================ */
 .fc-topbar {
   display: flex;
   gap: 10px;
@@ -68,34 +104,34 @@
   background: linear-gradient(135deg, #00c853, #64dd17);
   color: #000;
   font-weight: 600;
-  transition: transform 0.2s ease;
 }
 
-.fc-topbar button:hover {
-  transform: scale(1.05);
-}
-
-/* DROPDOWN */
+/* ===============================
+   DROPDOWN + TITLE
+================================ */
 .fc-dropdown {
   display: flex;
   gap: 10px;
   margin-bottom: 14px;
 }
 
-/* TITLE */
 .fc-title {
   margin: 18px 0;
   color: #00e676;
 }
 
-/* GRID */
+/* ===============================
+   GRID
+================================ */
 .fc-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 22px;
 }
 
-/* CARD */
+/* ===============================
+   CARD – SAAS TYPE
+================================ */
 .fc-card {
   background: #121917;
   padding: 16px;
@@ -103,234 +139,6 @@
   text-align: center;
   position: relative;
   box-shadow: 0 14px 35px rgba(0,0,0,0.6);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.fc-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 45px rgba(0,200,83,0.35);
-}
-
-.fc-card img {
-  width: 100%;
-  height: 150px;
-  object-fit: contain;
-}
-
-.fc-card button {
-  margin-top: 10px;
-  width: 100%;
-  padding: 10px;
-  border-radius: 22px;
-  background: linear-gradient(135deg, #00c853, #76ff03);
-  color: #000;
-  border: none;
-  font-weight: 700;
-  transition: transform 0.2s ease;
-}
-
-.fc-card button:active {
-  transform: scale(0.94);
-}
-
-/* WISHLIST */
-.fc-heart {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  cursor: pointer;
-  color: rgba(255,255,255,0.6);
-  font-size: 18px;
-  transition: transform 0.2s ease;
-}
-
-.fc-heart:hover {
-  transform: scale(1.3);
-}
-
-.fc-heart.active {
-  color: #ff5252;
-}
-
-/* SUCCESS */
-.fc-success {
-  background: #0f2f22;
-  color: #00e676;
-  padding: 8px 12px;
-  border-radius: 8px;
-  margin-bottom: 10px;
-}
-
-/* PRICE DISPLAY */
-.fc-price {
-  margin: 6px 0 2px;
-  font-size: 15px;
-}
-
-.fc-price .farmer-price {
-  color: #00e676;
-  font-weight: 700;
-}
-
-.fc-market {
-  font-size: 13px;
-  color: #9faeaa;
-}
-
-.fc-market span {
-  color: #ff5252;
-  font-weight: 600;
-  text-decoration: line-through;
-}
-
-/* CATEGORY CHIPS */
-.fc-chips {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin: 14px 0 20px;
-}
-
-.fc-chips button {
-  background: #0f2f22;
-  border: 1px solid #1f5d3a;
-  padding: 8px 14px;
-  border-radius: 20px;
-  font-size: 13px;
-  cursor: pointer;
-  color: #e6f4ef;
-  transition: all 0.25s ease;
-}
-
-.fc-chips button:hover,
-.fc-chips button.active {
-  background: #00c853;
-  color: #000;
-}
-
-/* PRICE SLIDER */
-.fc-price {
-  margin-bottom: 20px;
-  padding: 12px 16px;
-  background: #0f1c17;
-  border-radius: 14px;
-  width: fit-content;
-}
-
-.fc-price input[type="range"] {
-  width: 220px;
-  cursor: pointer;
-}
-
-/* SETTINGS SLIDE PANEL */
-.settings-panel {
-  background: #0f1c17;
-  color: #e6f4ef;
-}
-
-.logout-btn {
-  width: 100%;
-  margin-top: 30px;
-  background: #ff5252;
-  color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-}
-
-/* 📱 MOBILE RESPONSIVE FIX */
-@media (max-width: 768px) {
-
-  .fc-layout {
-    flex-direction: column;
-  }
-
-  .fc-sidebar {
-    display: none;
-  }
-
-  .fc-main {
-    padding: 12px;
-    width: 100%;
-  }
-
-  .fc-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
-  }
-
-  .fc-card {
-    padding: 12px;
-  }
-
-  .fc-card img {
-    height: 110px;
-  }
-
-  .fc-topbar {
-    flex-wrap: wrap;
-  }
-
-  .fc-topbar button {
-    flex: 1;
-  }
-
-  .fc-price {
-    width: 100%;
-  }
-
-  .fc-price input[type="range"] {
-    width: 100%;
-  }
-}
-
-
-
-/* ===============================
-   GLOBAL SMOOTHNESS
-================================ */
-* {
-  transition: background 0.25s ease,
-              color 0.25s ease,
-              transform 0.25s ease,
-              box-shadow 0.25s ease;
-}
-
-/* ===============================
-   SIDEBAR LINK MOTION
-================================ */
-.fc-sidebar nav a {
-  position: relative;
-  overflow: hidden;
-}
-
-.fc-sidebar nav a::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(0, 230, 118, 0.35),
-    transparent
-  );
-  transform: translateX(-100%);
-  transition: transform 0.45s ease;
-}
-
-.fc-sidebar nav a:hover::before {
-  transform: translateX(100%);
-}
-
-.fc-sidebar nav a:hover {
-  transform: translateX(6px) scale(1.03);
-  box-shadow: 0 6px 20px rgba(0, 200, 83, 0.35);
-}
-
-/* ===============================
-   CARD – SAAS TYPE FLOAT
-================================ */
-.fc-card {
   animation: breathe 4s ease-in-out infinite;
 }
 
@@ -346,10 +154,10 @@
   box-shadow: 0 25px 60px rgba(0, 230, 118, 0.45);
 }
 
-/* ===============================
-   IMAGE POP EFFECT
-================================ */
 .fc-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: contain;
   transition: transform 0.4s ease;
 }
 
@@ -358,23 +166,17 @@
 }
 
 /* ===============================
-   ❤️ WISHLIST HEART – PULSE
-================================ */
-.fc-heart.active {
-  animation: heartBeat 0.6s ease;
-}
-
-@keyframes heartBeat {
-  0%   { transform: scale(1); }
-  30%  { transform: scale(1.5); }
-  60%  { transform: scale(0.9); }
-  100% { transform: scale(1.2); }
-}
-
-/* ===============================
-   🛒 ADD TO CART – TAGDA EFFECT
+   ADD TO CART – TAGDA
 ================================ */
 .fc-card button {
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #00c853, #76ff03);
+  color: #000;
+  border: none;
+  font-weight: 700;
   position: relative;
   overflow: hidden;
   box-shadow: 0 10px 25px rgba(0, 200, 83, 0.35);
@@ -384,11 +186,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(
-    circle at center,
-    rgba(255,255,255,0.5),
-    transparent 70%
-  );
+  background: radial-gradient(circle, rgba(255,255,255,0.5), transparent 70%);
   opacity: 0;
   transition: opacity 0.35s ease;
 }
@@ -404,22 +202,47 @@
 
 .fc-card button:active {
   transform: scale(0.9);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.5);
 }
 
 /* ===============================
-   TOPBAR BUTTON POP
+   WISHLIST HEART
 ================================ */
-.fc-topbar button:hover {
-  transform: scale(1.1) rotate(-1deg);
-  box-shadow: 0 10px 22px rgba(0, 200, 83, 0.45);
+.fc-heart {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  cursor: pointer;
+  color: rgba(255,255,255,0.6);
+  font-size: 18px;
+}
+
+.fc-heart.active {
+  color: #ff5252;
+  animation: heartBeat 0.6s ease;
+}
+
+@keyframes heartBeat {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.5); }
+  60% { transform: scale(0.9); }
+  100% { transform: scale(1.2); }
 }
 
 /* ===============================
-   FILTER / CHIP JUICE
+   PRICE / CHIPS
 ================================ */
-.fc-chips button {
-  position: relative;
+.fc-price {
+  margin-bottom: 20px;
+  padding: 12px 16px;
+  background: #0f1c17;
+  border-radius: 14px;
+  width: fit-content;
+}
+
+.fc-chips {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .fc-chips button:hover {
@@ -428,9 +251,47 @@
 }
 
 /* ===============================
-   MOBILE – STILL SMOOTH
+   OVERLAY
+================================ */
+.sidebar-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 1100;
+}
+
+/* ===============================
+   MOBILE – HAMBURGER FIX
 ================================ */
 @media (max-width: 768px) {
+
+  .fc-layout {
+    flex-direction: column;
+  }
+
+  /* ✅ SLIDE SIDEBAR */
+  .fc-sidebar {
+    position: fixed;
+    top: 0;
+    left: -240px;
+    height: 100vh;
+    z-index: 1200;
+    transition: left 0.35s ease;
+  }
+
+  .fc-sidebar.open {
+    left: 0;
+  }
+
+  .fc-main {
+    padding: 12px;
+  }
+
+  .fc-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
   .fc-card {
     animation: none;
   }
