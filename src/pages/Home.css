@@ -227,3 +227,83 @@
     gap: 25px;
   }
 }
+
+
+/* ===== MOBILE FIXES ===== */
+@media (max-width: 768px) {
+
+  .header {
+    flex-direction: column;
+    gap: 12px;
+    padding: 14px 16px;
+    text-align: center;
+  }
+
+  .slogan {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .header-controls {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .lang-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .lang-buttons button {
+    font-size: 11px;
+    padding: 5px 8px;
+  }
+
+  .hero-content {
+    padding: 40px 14px 30px;
+  }
+
+  .title {
+    font-size: 28px;
+    line-height: 1.2;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    margin-bottom: 30px;
+  }
+
+  .card-wrapper {
+    flex-direction: column;
+    gap: 22px;
+    align-items: center;
+  }
+
+  .glass-card {
+    width: 100%;
+    max-width: 340px;
+    padding: 24px 18px;
+  }
+
+  .glass-card h2 {
+    font-size: 18px;
+  }
+
+  .glass-card p {
+    font-size: 13px;
+  }
+
+  .primary-btn,
+  .outline-btn {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .footer {
+    margin-top: 40px;
+    font-size: 12px;
+    padding: 16px;
+  }
+}

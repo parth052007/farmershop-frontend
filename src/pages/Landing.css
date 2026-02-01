@@ -247,3 +247,75 @@
   background: #22c55e;
   color: #000;
 }
+
+
+
+/* ===========================
+   MOBILE RESPONSIVE FIX
+=========================== */
+@media (max-width: 768px) {
+
+  .landing-nav {
+    flex-direction: column;
+    gap: 14px;
+    padding: 16px 18px;
+    text-align: center;
+  }
+
+  .landing-nav .logo {
+    font-size: 22px;
+    letter-spacing: 2px;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .nav-links li {
+    font-size: 13px;
+  }
+
+  /* ===== HERO ===== */
+  .hero-content {
+    height: auto;
+    min-height: calc(100vh - 120px);
+    padding: 30px 16px;
+  }
+
+  .hero-content h1 {
+    font-size: 28px;
+    line-height: 1.2;
+    letter-spacing: 1.5px;
+  }
+
+  .hero-content p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .hero-content button {
+    padding: 12px 28px;
+    font-size: 13px;
+    margin-top: 26px;
+  }
+
+  /* ===== INFO OVERLAY ===== */
+  .info-box {
+    width: 90%;
+    max-width: 360px;
+    padding: 24px 20px;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+
+  .info-box h2 {
+    font-size: 18px;
+  }
+
+  .info-box p,
+  .info-box li {
+    font-size: 13px;
+  }
+}
