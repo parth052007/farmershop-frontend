@@ -12,9 +12,9 @@ export default function ForgotPassword() {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/auth/forgot-password",
-        { email }
-      );
+  "https://farmer-shop-backend.onrender.com/api/auth/forgot-password",
+  { email }
+);
 
       setResetLink(res.data.resetLink);
       setMsg("Reset link generated 👇");
