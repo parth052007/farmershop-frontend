@@ -12,23 +12,25 @@ export default function ResetPassword() {
   const [msg, setMsg] = useState("");
 
   const handleReset = async () => {
-    if (!password || !confirm)
-      return alert("Fill all fields");
+  if (!password || !confirm)
+    return alert("Fill all fields");
 
-    if (password !== confirm)
-      return alert("Passwords do not match");
+  if (password !== confirm)
+    return alert("Passwords do not match");
 
-    try {
-      const res = await axios.post(
-  `https://farmer-shop-backend.onrender.com/api/auth/reset-password/${token}`
-)
+  try {
+    const res = await axios.post(
+      `https://farmer-shop-backend.onrender.com/api/auth/reset-password/${token}`,
+      { password }
+    );
 
-      alert(res.data.message);
-      navigate("/login");
-    } catch (err) {
-      setMsg(err.response?.data?.message || "Reset failed");
-    }
-  };
+    alert(res.data.message);
+    navigate("/login");
+
+  } catch (err) {
+    setMsg(err.response?.data?.message || "Reset failed");
+  }
+};
 
   return (
     <div className="container center login-page">
