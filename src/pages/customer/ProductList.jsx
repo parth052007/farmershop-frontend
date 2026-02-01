@@ -31,7 +31,7 @@ export default function ProductList() {
   const [showSettings, setShowSettings] = useState(false);
   const [editMode, setEditMode] = useState(false);
 
-  // ✅ HAMBURGER STATE (ONLY ADDITION)
+  // ✅ HAMBURGER STATE
   const [showSidebar, setShowSidebar] = useState(false);
 
   const user = JSON.parse(localStorage.getItem("loggedUser"));
@@ -49,6 +49,26 @@ export default function ProductList() {
     const saved = getWishlist();
     setWishlist(saved.map(p => p._id));
   }, []);
+
+  // 🔥🔥🔥 BACK BUTTON FIX (ONLY ADDITION — NOTHING REMOVED)
+  useEffect(() => {
+    if (showSidebar) {
+      window.history.pushState({ sidebar: true }, "");
+    }
+
+    const handleBack = () => {
+      if (showSidebar) {
+        setShowSidebar(false);
+      }
+    };
+
+    window.addEventListener("popstate", handleBack);
+
+    return () => {
+      window.removeEventListener("popstate", handleBack);
+    };
+  }, [showSidebar]);
+  // 🔥🔥🔥 END FIX
 
   const toggleWishlist = (product) => {
     const saved = getWishlist();
@@ -120,7 +140,7 @@ export default function ProductList() {
         </nav>
       </aside>
 
-      {/* SIDEBAR OVERLAY (ONLY ADDITION) */}
+      {/* SIDEBAR OVERLAY */}
       {showSidebar && (
         <div
           className="sidebar-overlay"
@@ -234,7 +254,6 @@ export default function ProductList() {
       <main className="fc-main">
 
         <div className="fc-topbar">
-          {/* ✅ HAMBURGER BUTTON (ONLY ADDITION) */}
           <button
             className="hamburger"
             onClick={() => setShowSidebar(true)}
